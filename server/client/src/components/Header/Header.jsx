@@ -6,6 +6,7 @@ import { BsHandbag } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import Cart from "../../pages/Cart/Cart";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -158,7 +159,7 @@ const Header = () => {
       </nav>
 
       {/* hidden cart drawer */}
-      {/* <div className={isCartOpen ? "mini-cart-open" : ""}>
+      <div className={isCartOpen ? "mini-cart-open" : ""}>
         <div className="mini-cart">
           <Cart setCartOpen={setCartOpen} isCartOpen={isCartOpen} />
         </div>
@@ -168,7 +169,7 @@ const Header = () => {
           }
           onClick={toggleCart}
         />
-      </div> */}
+      </div>
 
       {/* hidden mobile menu drawer */}
       <div className={isMobileOpen ? "mini-cart-open" : ""}>

@@ -4,7 +4,11 @@
 
 @use "./header";
 @use "./mobile-menu";
-@use "./cart";
+@use "./banner";
+
+// login and regiser
 @use "./register";
 
-@use "./banner";
+// cart
+@use "./cart";
+@use "./cart-list";

@@ -5,8 +5,8 @@ import { Spinner } from "react-bootstrap";
 import { validRegister } from "../../utils/validation";
 
 const Register = () => {
-  const navigate = useNavigate();
-  let location = useLocation();
+  // const navigate = useNavigate();
+  // let location = useLocation();
 
   const [newUser, setNewUser] = useState({
     email: "",
@@ -15,7 +15,7 @@ const Register = () => {
     cf_password: "",
   });
 
-  const redirect = location.state?.path || "/";
+  // const redirect = location.state?.path || "/";
 
   const { name, email, password, cf_password } = newUser;
 
