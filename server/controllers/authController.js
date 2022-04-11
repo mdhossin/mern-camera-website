@@ -24,11 +24,7 @@ const authCtrl = {
       name: Joi.string().min(3).max(30).required(),
       email: Joi.string().email().required(),
       password: Joi.string()
-        .pattern(
-          new RegExp(
-            "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$"
-          )
-        )
+        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .required(),
       repeat_password: Joi.ref("password"),
     });

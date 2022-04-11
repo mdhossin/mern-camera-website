@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 import { validRegister } from "../../utils/validation";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useToasts } from "react-toast-notifications";
+import { register } from "../../redux/actions/userActions";
+import { USER_REGISTER_RESET } from "../../redux/constants/userConstants";
 const Register = () => {
-  // const navigate = useNavigate();
-  // let location = useLocation();
+  const dispatch = useDispatch();
+  const { addToast } = useToasts();
 
   const [newUser, setNewUser] = useState({
     email: "",
@@ -14,8 +17,6 @@ const Register = () => {
     name: "",
     cf_password: "",
   });
-
-  // const redirect = location.state?.path || "/";
 
   const { name, email, password, cf_password } = newUser;
 
@@ -26,15 +27,22 @@ const Register = () => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
+  const userReg = useSelector((state) => state.userRegister);
+
+  const { loading, error, userInfo: userRegInfo } = userReg;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const result = validRegister(newUser);
-    console.log(result, "register");
+
     if (result?.errLength) {
-      //   return toast.error(result?.errMsg[0]);
+      return addToast(result?.errMsg[0], {
+        appearance: "error",
+        autoDismiss: true,
+      });
     }
 
-    // dispatch(register(email, password, name));
+    dispatch(register(name, email, password));
 
     setNewUser({
       email: "",
@@ -44,15 +52,18 @@ const Register = () => {
     });
   };
 
-  //   useEffect(() => {
-  //     if (error) {
-  //       toast.error(error);
-  //       dispatch({ type: USER_RESET });
-  //     } else if (currentUser) {
-  //       toast.success("Register Successfull.");
-  //       navigate(redirect, { replace: true });
-  //     }
-  //   }, [navigate, redirect, currentUser, error, dispatch]);
+  useEffect(() => {
+    if (error) {
+      dispatch({ type: USER_REGISTER_RESET });
+      addToast(error, { appearance: "error", autoDismiss: true });
+    } else if (userRegInfo) {
+      dispatch({ type: USER_REGISTER_RESET });
+      addToast(userRegInfo?.message, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+    }
+  }, [userRegInfo, error, addToast, dispatch]);
 
   return (
     <section className="section">
@@ -71,6 +82,7 @@ const Register = () => {
                 value={name}
                 onChange={handleChangeInput}
                 placeholder="Your Name"
+                required
               />
             </div>
             <div className="contact__form__div">
@@ -83,6 +95,7 @@ const Register = () => {
                 value={email}
                 onChange={handleChangeInput}
                 placeholder="Your Email"
+                required
               />
             </div>
 
@@ -97,6 +110,7 @@ const Register = () => {
                 id="password"
                 onChange={handleChangeInput}
                 placeholder="Your Password"
+                required
               />
               <small onClick={() => setTypePass(!typePass)}>
                 {typePass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -113,6 +127,7 @@ const Register = () => {
                 id="cf_password"
                 onChange={handleChangeInput}
                 placeholder="Confrim Password"
+                required
               />
               <small onClick={() => setTypeCfPass(!typeCfPass)}>
                 {typeCfPass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -122,9 +137,9 @@ const Register = () => {
             <button
               className="button"
               type="submit"
-              disabled={email && password ? false : true}
+              // disabled={email && password ? false : true}
             >
-              {false ? <Spinner animation="border" size="sm" /> : "Register"}
+              {loading ? <Spinner animation="border" size="sm" /> : "Register"}
             </button>
             <div className="contact__form__forgot">
               <Link to="/login"> Already have an account ? Login</Link>
