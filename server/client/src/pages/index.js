@@ -4,5 +4,14 @@ import Login from "./Login/Login";
 import Cart from "./Cart/Cart";
 import CartList from "./CartList/CartList";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
+import ActivationEmail from "./ActivationEmail/ActivationEmail";
 
-export { Home, Register, Login, Cart, CartList, ForgotPassword };
+export {
+  Home,
+  Register,
+  Login,
+  Cart,
+  CartList,
+  ForgotPassword,
+  ActivationEmail,
+};

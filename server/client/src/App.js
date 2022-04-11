@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import { ForgotPassword, Home, Login, Register } from "./pages";
+import {
+  ForgotPassword,
+  Home,
+  Login,
+  Register,
+  ActivationEmail,
+} from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
 import { ToastProvider } from "react-toast-notifications";
@@ -22,6 +28,8 @@ function App() {
         <Route path="login" element={<Login />} />
 
         <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+
+        <Route path="/active/:activation_token" element={<ActivationEmail />} />
       </Routes>
     </ToastProvider>
   );
