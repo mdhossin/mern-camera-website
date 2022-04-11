@@ -1,75 +1,104 @@
 @use "./utils/" as *;
-@use "./utils/" as *;
 
-.hero {
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  //   background-image: url("../../assets/images/banner.jpg");
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &__overlay {
-    position: absolute;
-    content: "";
-    background: rgba(8, 41, 77, 0.53);
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  &__content {
-    z-index: 10;
-    width: 500px;
-    text-align: center;
-    color: #fff;
-    @include breakpoints-down("small") {
-      padding: 0 1.5rem;
-    }
-
-    h1 {
-      color: #fff;
-      font-size: 32px;
-      font-weight: 700;
-
-      @include breakpoint-up("large") {
-        font-size: 3rem;
-        line-height: 1.2;
-      }
-    }
-
+.banner {
+  &__desc {
     p {
-      color: #fff;
-      font-size: 16px;
-      margin: 1rem 0;
-    }
-
-    button {
-      width: 250px;
-      // display: block;
-      // margin-top: 1rem;
-      text-transform: capitalize;
       font-size: 15px;
       font-weight: 600;
 
-      background-color: transparent;
-      border: 1px solid #fff;
       color: #fff;
-      padding: 0;
+      margin-bottom: 0.3rem;
+      @include breakpoint-up("xlarge") {
+        margin: 1rem 0;
+        text-align: start;
+        font-size: 18px;
+      }
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.2;
+      @include breakpoint-up("small") {
+        font-size: 1.8rem;
+      }
+      @include breakpoint-up("large") {
+        font-size: 2rem;
+      }
+      @include breakpoint-up("xlarge") {
+        font-size: 3rem;
+      }
+    }
+
+    button {
+      background-color: var(--main-color);
       height: 50px;
       line-height: 50px;
-      transition: var(--transition);
-      border-radius: 40px;
-
+      width: 180px;
+      font-size: 16px;
+      color: #fff;
+      display: block;
+      margin: 1rem auto;
+      transition: all 0.5s ease;
+      font-weight: 600;
       &:hover {
         background-color: #fff;
-        color: #2c2c2c;
+        color: #333;
+      }
+
+      @include breakpoint-up("xlarge") {
+        margin: 1rem 0;
       }
     }
   }
+}
+
+// override bootstrap style
+.carousel-inner {
+  .carousel-caption {
+    // position: absolute;
+    right: 0;
+    bottom: 1.25rem;
+    left: 0;
+
+    top: 17%;
+
+    @include breakpoint-up("small") {
+      top: 20%;
+    }
+
+    @include breakpoint-up("medium") {
+      top: 25%;
+    }
+
+    @include breakpoint-up("large") {
+      top: 37%;
+    }
+
+    @include breakpoint-up("xlarge") {
+      right: 40%;
+      width: 35%;
+      text-align: start;
+      top: 33%;
+    }
+  }
+}
+
+// .carousel-control-prev,
+// .carousel-control-next {
+//   @media screen and (max-width: 968px) {
+//     top: -15% !important;
+//   }
+// }
+.carousel-item {
+  img {
+    @media screen and (max-width: 575px) {
+      height: 37vh !important;
+    }
+  }
+}
+
+.carousel-indicators {
+  display: none;
 }
