@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import { Home } from "./pages";
+import { Home, Login, Register } from "./pages";
 import "./styles/styles.scss";
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
       </Routes>
     </>
   );
