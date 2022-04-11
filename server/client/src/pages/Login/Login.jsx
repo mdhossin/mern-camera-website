@@ -74,6 +74,7 @@ const Login = () => {
                 value={email}
                 onChange={handleChangeInput}
                 placeholder="Your Email"
+                required
               />
             </div>
             <div className="contact__form__div pass">
@@ -87,6 +88,7 @@ const Login = () => {
                 value={password}
                 onChange={handleChangeInput}
                 placeholder="Your Password"
+                required
               />
               <small onClick={() => setTypePass(!typePass)}>
                 {typePass ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -100,7 +102,7 @@ const Login = () => {
             <button
               className="button"
               type="submit"
-              disabled={email && password ? false : true}
+              // disabled={email && password ? false : true}
             >
               {loading ? <Spinner animation="border" size="sm" /> : "login"}
             </button>
@@ -108,7 +110,7 @@ const Login = () => {
             <div className="social">
               <GoogleLogin
                 clientId="371370040135-2f71d8rrmn8ami8mfc77ivcst7adc3cp.apps.googleusercontent.com"
-                buttonText="Signin with google"
+                buttonText="Login with google"
                 onSuccess={responseGoogle}
                 cookiePolicy={"single_host_origin"}
                 theme="dark"

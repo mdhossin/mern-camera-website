@@ -1,7 +1,7 @@
 @use "./utils" as *;
 .contact {
   margin-top: 3rem !important;
-  width: 500px;
+  width: 400px;
   margin: 0 auto;
 
   @include breakpoints-down("small") {
@@ -72,6 +72,32 @@
       &-tag {
         display: block;
         margin: 0.5rem 0;
+      }
+    }
+    .social button {
+      width: 100%;
+      margin: 10px 0;
+      height: 50px;
+      text-transform: capitalize;
+      box-shadow: 0 2px 4px #777;
+      margin-top: 1rem;
+
+      span {
+        display: block;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        margin-left: 10px;
+
+        @include breakpoint-up("medium") {
+          margin-left: 60px;
+        }
+
+        @include breakpoint-up("large") {
+          margin-left: 95px;
+        }
       }
     }
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const authCtrl = require("../controllers/authController");
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.post("/login", authCtrl.login);
 
 // logout route must be authenticated
 
-// router.get("/logout", auth, authCtrl.logout);
+router.get("/logout", auth, authCtrl.logout);
 
 // refresh token route
 

@@ -1,23 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { CgMenuLeft } from "react-icons/cg";
-
+import { useToasts } from "react-toast-notifications";
 import { BsHandbag } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import Cart from "../../pages/Cart/Cart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { USER_LOGOUT_RESET } from "../../redux/constants/userConstants";
+import { logout } from "../../redux/actions/userActions";
 
 const Header = () => {
   const navigate = useNavigate();
   const headerRef = useRef(null);
+  const dispatch = useDispatch();
+  const { addToast } = useToasts();
   const [isCartOpen, setCartOpen] = useState(false);
   const [isMobileOpen, setMobileOpen] = useState(false);
 
   const user = useSelector((state) => state.userLogin);
   const { userInfo } = user;
-  console.log(userInfo?.user?.avatar, "header");
+
+  const logoutUser = useSelector((state) => state.userLogout);
+  const { userLogout, error } = logoutUser;
 
   const toggleCart = () => {
     setCartOpen(false);
@@ -40,11 +47,29 @@ const Header = () => {
     };
   }, []);
 
-  const handleLogout = async () => {};
-
   const toogleMobileMenu = () => {
     setMobileOpen(false);
   };
+
+  const handleLogout = () => {
+    if (!userInfo?.access_token) return;
+    dispatch(logout(userInfo?.access_token));
+  };
+
+  useEffect(() => {
+    if (error) {
+      dispatch({ type: USER_LOGOUT_RESET });
+      addToast(error, { appearance: "error", autoDismiss: true });
+    } else if (userLogout) {
+      dispatch({ type: USER_LOGOUT_RESET });
+
+      addToast(userLogout?.message, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      navigate("/");
+    }
+  }, [userLogout, error, addToast, dispatch, navigate]);
 
   return (
     <header className="header" ref={headerRef}>
@@ -98,10 +123,8 @@ const Header = () => {
               title={
                 userInfo?.user ? (
                   <>
-                    <span style={{ marginRight: ".5rem", color: "#333" }}>
-                      {userInfo?.user?.name}
-                    </span>
                     <img
+                      title={userInfo?.user?.name}
                       style={{ borderRadius: "50%" }}
                       width="22"
                       height="22"
@@ -121,7 +144,7 @@ const Header = () => {
                     className="nav__dropdown__item"
                     // onClick={() => navigate("/dashboard")}
                   >
-                    Profile
+                    Dashboard
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className="nav__dropdown__item"
