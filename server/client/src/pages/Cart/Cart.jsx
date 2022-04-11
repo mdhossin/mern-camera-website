@@ -4,12 +4,12 @@ import { BiShoppingBag } from "react-icons/bi";
 import { CartSummary, CheckOut } from "../../components";
 import CartList from "../CartList/CartList";
 
-const Cart = ({ setCartOpen, isCartOpen }) => {
-  const increaseQuantity = (id, quantity, stock) => {};
+const Cart = ({ setCartOpen }) => {
+  const increaseQuantity = () => {};
 
-  const decreaseQuantity = (id, quantity) => {};
+  const decreaseQuantity = () => {};
 
-  const deleteCartItems = (id) => {};
+  const deleteCartItems = () => {};
 
   const cartItems = [
     {
