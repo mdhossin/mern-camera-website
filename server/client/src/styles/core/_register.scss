@@ -1,0 +1,117 @@
+@use "./utils" as *;
+.contact {
+  margin-top: 3rem !important;
+  width: 500px;
+  margin: 0 auto;
+
+  @include breakpoints-down("small") {
+    width: 350px;
+    padding: 43px 20px 50px;
+  }
+  //extra medium 375px
+  @include breakpoints-down("xm") {
+    width: 300px;
+  }
+  @include breakpoints-down("xs") {
+    width: 280px;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #2c2c2c;
+    text-align: center;
+    margin-bottom: 3rem;
+
+    @include breakpoint-up("xlarge") {
+      font-size: 2rem;
+    }
+  }
+  // forgot password forgot page
+  &__desc {
+    text-align: center;
+    color: #2c2c2c;
+    margin-bottom: 1.5rem;
+  }
+  &__form {
+    @include breakpoint-up("medium") {
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      border: 1px solid #e4e4e4;
+      font-size: 14px;
+
+      &:focus {
+        border: 1px solid #e4e4e4;
+        box-shadow: 0 0 6px rgb(0 0 0 / 20%);
+      }
+    }
+    &__div {
+      margin: 1rem 0;
+
+      position: relative;
+      small {
+        position: absolute;
+        top: 70%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        opacity: 0.5;
+        svg {
+          font-size: 16px;
+        }
+      }
+
+      &-tag {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+
+    // forgot text singup page
+    &__forgot {
+      text-align: end;
+      margin-top: 1rem;
+      a {
+        transition: var(--transition);
+
+        &:hover {
+          color: var(--hover-color);
+        }
+      }
+    }
+
+    // reset password forgot page
+    &__reset {
+      display: flex;
+      gap: 1rem;
+
+      &-submit,
+      &-cancel {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.pass {
+  position: relative;
+}
+.pass small {
+  position: absolute;
+  top: 70%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.5;
+  svg {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,24 @@
+@use "./utils/" as *;
+
+.activation {
+  height: 100vh;
+  @include flex(center, center);
+
+  &__error {
+    margin-bottom: 2rem;
+    color: red;
+    font-weight: 600;
+  }
+
+  &__success {
+    margin-bottom: 2rem;
+    color: var(--theme-color);
+    font-weight: 600;
+  }
+
+  button {
+    // padding: 0 2rem;
+    width: 200px;
+    margin: 0 auto;
+  }
+}

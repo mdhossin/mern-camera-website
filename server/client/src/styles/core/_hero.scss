@@ -1,0 +1,104 @@
+@use "./utils/" as *;
+
+.banner {
+  &__desc {
+    p {
+      font-size: 15px;
+      font-weight: 600;
+
+      color: #fff;
+      margin-bottom: 0.3rem;
+      @include breakpoint-up("xlarge") {
+        margin: 1rem 0;
+        text-align: start;
+        font-size: 18px;
+      }
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.2;
+      @include breakpoint-up("small") {
+        font-size: 1.8rem;
+      }
+      @include breakpoint-up("large") {
+        font-size: 2rem;
+      }
+      @include breakpoint-up("xlarge") {
+        font-size: 3rem;
+      }
+    }
+
+    button {
+      background-color: var(--main-color);
+      height: 50px;
+      line-height: 50px;
+      width: 180px;
+      font-size: 16px;
+      color: #fff;
+      display: block;
+      margin: 1rem auto;
+      transition: all 0.5s ease;
+      font-weight: 600;
+      &:hover {
+        background-color: #fff;
+        color: #333;
+      }
+
+      @include breakpoint-up("xlarge") {
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+// override bootstrap style
+.carousel-inner {
+  .carousel-caption {
+    // position: absolute;
+    right: 0;
+    bottom: 1.25rem;
+    left: 0;
+
+    top: 17%;
+
+    @include breakpoint-up("small") {
+      top: 20%;
+    }
+
+    @include breakpoint-up("medium") {
+      top: 25%;
+    }
+
+    @include breakpoint-up("large") {
+      top: 37%;
+    }
+
+    @include breakpoint-up("xlarge") {
+      right: 40%;
+      width: 35%;
+      text-align: start;
+      top: 33%;
+    }
+  }
+}
+
+// .carousel-control-prev,
+// .carousel-control-next {
+//   @media screen and (max-width: 968px) {
+//     top: -15% !important;
+//   }
+// }
+.carousel-item {
+  img {
+    @media screen and (max-width: 575px) {
+      height: 37vh !important;
+    }
+  }
+}
+
+.carousel-indicators {
+  display: none;
+}

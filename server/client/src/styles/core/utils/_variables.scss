@@ -1,0 +1,36 @@
+/*=============== VARIABLES CSS ===============*/
+:root {
+  // text Colors ---------------
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey: #f6f7f8;
+  --color-red: #f6f7f8;
+  --color-green: #f6f7f8;
+
+  --main-color: #f1510a;
+  --hover-color: #ffb001;
+  --heading-color: #333333;
+  --button-hover-color: #ffb001;
+
+  --header-height: 3.5rem;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Raleway", sans-serif;
+  --biggest-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.3rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semibold: 600;
+
+  /*========== z index ==========*/
+  --transition: all 400ms ease;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+
+  --dark-overflow-bg: #0006;
+}

@@ -1,0 +1,263 @@
+@use "./utils" as *;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: rem(14);
+
+  font-style: normal;
+
+  font-weight: 400;
+  line-height: 1.5;
+
+  background-color: white;
+  color: #2c2c2c;
+
+  @include breakpoints-down("medium") {
+    margin-bottom: 3rem;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+/* ====== global styles any section can i use ====== */
+
+.container-div {
+  max-width: 968px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  //min-width: 1024px
+  @include breakpoint-up("xlarge") {
+    margin: 1rem auto;
+  }
+  @include breakpoint-up("xxlarge") {
+    max-width: 1200px;
+  }
+}
+.app__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.main {
+  overflow: hidden;
+}
+
+/*-- Common Style --*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+
+  margin-top: 0;
+
+  color: var(--heading-color);
+}
+
+p {
+  font-size: rem(14);
+  font-weight: 400;
+  line-height: rem(24);
+
+  margin-bottom: rem(15);
+
+  color: #333;
+}
+
+h1 {
+  font-size: rem(36);
+  line-height: rem(42);
+}
+
+h2 {
+  font-size: rem(30);
+  line-height: rem(36);
+}
+
+h3 {
+  font-size: rem(24);
+  line-height: rem(30);
+}
+
+h4 {
+  font-size: rem(18);
+  line-height: 24px;
+}
+
+h5 {
+  font-size: rem(14);
+  line-height: rem(18);
+}
+
+h6 {
+  font-size: rem(12);
+  line-height: rem(14);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+a,
+button {
+  line-height: inherit;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  color: #000;
+}
+button {
+  border: none;
+  outline: none;
+}
+
+a,
+button,
+img,
+input,
+span {
+  transition: all 0.3s ease 0s;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: outside none none;
+}
+
+.section {
+  padding: 5rem 0;
+
+  //min-width: 1024px
+  // @include breakpoint-up("xlarge") {
+  //   padding: 4rem 0;
+  // }
+}
+/*--
+    - Common Classes
+-----------------------------------------*/
+
+.button {
+  display: block;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  font-size: 16px;
+  width: 100%;
+  background-color: var(--main-color);
+
+  color: #fff;
+  padding: 0;
+  height: 50px;
+  line-height: 50px;
+  transition: var(--transition);
+
+  &:hover {
+    background-color: var(--hover-color);
+  }
+}
+
+.button-primary {
+  display: block;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  font-size: 16px;
+  width: 100%;
+  background-color: var(--color-grey);
+  color: #2c2c2c;
+  padding: 0;
+  height: 50px;
+  line-height: 50px;
+  transition: var(--transition);
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--theme-color);
+  }
+}
+.button-secondary {
+  display: block;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  font-size: 16px;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #2c2c2c;
+  color: #2c2c2c;
+  padding: 0;
+  height: 50px;
+  line-height: 50px;
+  transition: var(--transition);
+
+  &:hover {
+    background-color: #2c2c2c;
+    color: #fff;
+  }
+}
+
+input {
+  font-size: 15px;
+
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+  border-radius: 3px;
+  color: #2c2c2c;
+  border: 1px solid #e4e4e4 !important;
+  background: transparent;
+  box-shadow: none;
+}
+
+input:focus {
+  background: transparent;
+}
