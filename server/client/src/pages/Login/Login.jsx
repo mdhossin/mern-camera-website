@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { GoogleLogin } from "react-google-login";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
-
+import { useDispatch, useSelector } from "react-redux";
+import { googleLogin, login } from "../../redux/actions/userActions";
+import { useToasts } from "react-toast-notifications";
+import { USER_LOGIN_RESET } from "../../redux/constants/userConstants";
 const Login = () => {
   const navigate = useNavigate();
   let location = useLocation();
-
+  const { addToast } = useToasts();
   const [newUser, setNewUser] = useState({ email: "", password: "" });
-
+  const dispatch = useDispatch();
   const redirect = location.state?.path || "/";
 
   const { email, password } = newUser;
 
   const [typePass, setTypePass] = useState(false);
+
+  const userLogin = useSelector((state) => state?.userLogin);
+
+  const { loading, error, userInfo } = userLogin;
 
   const handleChangeInput = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
@@ -23,31 +30,31 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // dispatch(login(email, password));
+    dispatch(login(email, password));
   };
 
   const responseGoogle = async (response) => {
     try {
-      //   dispatch(googleLogin(response.tokenId));
+      dispatch(googleLogin(response.tokenId));
     } catch (error) {
       console.log(error);
     }
   };
 
-  //   useEffect(() => {
-  //     if (error) {
-  //       dispatch({ type: USER_LOGIN_RESET });
-  //       addToast(error, { appearance: "error", autoDismiss: true });
-  //     } else if (userInfo) {
-  //       if (userInfo.message !== undefined) {
-  //         addToast(userInfo?.message, {
-  //           appearance: "success",
-  //           autoDismiss: true,
-  //         });
-  //       }
-  //       navigate(redirect, { replace: true });
-  //     }
-  //   }, [userInfo, error, addToast, navigate, dispatch, redirect]);
+  useEffect(() => {
+    if (error) {
+      dispatch({ type: USER_LOGIN_RESET });
+      addToast(error, { appearance: "error", autoDismiss: true });
+    } else if (userInfo) {
+      if (userInfo.message !== undefined) {
+        addToast(userInfo?.message, {
+          appearance: "success",
+          autoDismiss: true,
+        });
+      }
+      navigate(redirect, { replace: true });
+    }
+  }, [userInfo, error, addToast, navigate, dispatch, redirect]);
 
   return (
     <section className="section">
@@ -95,17 +102,17 @@ const Login = () => {
               type="submit"
               disabled={email && password ? false : true}
             >
-              {false ? <Spinner animation="border" size="sm" /> : "login"}
+              {loading ? <Spinner animation="border" size="sm" /> : "login"}
             </button>
 
             <div className="social">
-              {/* <GoogleLogin
-                clientId="649886608461-2bepdbv7vetejfvem6pjh23406vdeip4.apps.googleusercontent.com"
+              <GoogleLogin
+                clientId="371370040135-2f71d8rrmn8ami8mfc77ivcst7adc3cp.apps.googleusercontent.com"
                 buttonText="Signin with google"
                 onSuccess={responseGoogle}
                 cookiePolicy={"single_host_origin"}
                 theme="dark"
-              /> */}
+              />
             </div>
 
             <div className="contact__form__forgot">

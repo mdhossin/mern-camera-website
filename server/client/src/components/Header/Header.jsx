@@ -7,12 +7,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import Cart from "../../pages/Cart/Cart";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
   const headerRef = useRef(null);
   const [isCartOpen, setCartOpen] = useState(false);
   const [isMobileOpen, setMobileOpen] = useState(false);
+
+  const user = useSelector((state) => state.userLogin);
+  const { userInfo } = user;
+  console.log(userInfo?.user?.avatar, "header");
 
   const toggleCart = () => {
     setCartOpen(false);
@@ -91,16 +96,16 @@ const Header = () => {
 
             <NavDropdown
               title={
-                false ? (
+                userInfo?.user ? (
                   <>
                     <span style={{ marginRight: ".5rem", color: "#333" }}>
-                      abdul
+                      {userInfo?.user?.name}
                     </span>
                     <img
                       style={{ borderRadius: "50%" }}
                       width="22"
                       height="22"
-                      src=""
+                      src={userInfo?.user?.avatar}
                       alt=""
                     />
                   </>
@@ -110,7 +115,7 @@ const Header = () => {
               }
               id="collasible-nav-dropdown"
             >
-              {false ? (
+              {userInfo?.user ? (
                 <>
                   <NavDropdown.Item
                     className="nav__dropdown__item"
