@@ -116,16 +116,6 @@
             border-top: 1px solid #ebeeee;
           }
 
-          &__increase,
-          &__decrease {
-            border: none;
-            outline: none;
-            background: transparent;
-            svg {
-              font-size: 16px;
-              color: #2c2c2c;
-            }
-          }
           &-img {
             display: block;
             width: 80px;
@@ -171,14 +161,8 @@
 
                 margin-top: 16px;
 
-                &-quantity {
-                  border: 1px solid #ebeeee;
-                  padding: 0.1rem 0.8rem;
-                  span {
-                    margin: 0 1rem;
-                    font-size: 16px;
-                    color: #707070;
-                  }
+                select {
+                  padding: 0.1rem 1rem;
                 }
 
                 &-price {
@@ -199,14 +183,14 @@
 /* start cart common styles */
 .summary-item {
   .summary-label {
-    color: #2c2c2c;
+    color: #fff;
     font-weight: 500;
     text-transform: capitalize;
     font-size: 18px;
   }
 
   .summary-value {
-    color: #2c2c2c;
+    color: #fff;
     font-size: 20px;
     font-weight: 500;
     font-family: "Roboto", sans-serif;

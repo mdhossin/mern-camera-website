@@ -37,36 +37,17 @@ const CartList = ({
 
             <div className="cart__header__body__list__item__details__price">
               <div className="cart__header__body__list__item__details__price__wrapper">
-                <div className="product__detail__info__buttons">
-                  <div className="product__detail__info__buttons-quantity">
-                    <button
-                      onClick={() =>
-                        decreaseQuantity(item.product, item.quantity)
-                      }
-                      className="minus"
-                    >
-                      -
-                    </button>
-                    <input
-                      className="input"
-                      readOnly
-                      type="number"
-                      value={item.quantity}
-                    />
-                    <button
-                      onClick={() =>
-                        increaseQuantity(
-                          item.product,
-                          item.quantity,
-                          item.stock
-                        )
-                      }
-                      className="add"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
+                <select
+                  value={item.qty}
+                  // onChange={(e) => qtyChangeHandler(item.product, e.target.value)}
+                  className="cartItem__select"
+                >
+                  {[...Array(item?.countInStock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
                 <div className="cart__header__body__list__item__details__price__wrapper-price">
                   ${item.price * item.quantity}
                 </div>
