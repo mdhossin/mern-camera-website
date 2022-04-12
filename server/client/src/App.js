@@ -9,6 +9,10 @@ import {
   ActivationEmail,
   ResetPassword,
   NotFound,
+  PrivateRoute,
+  UserDashboard,
+  Profile,
+  Myorders,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -34,6 +38,18 @@ function App() {
         <Route path="/user/reset/:token" element={<ResetPassword />} />
 
         <Route path="/active/:activation_token" element={<ActivationEmail />} />
+
+        <Route
+          path="dashboard"
+          element={
+            <PrivateRoute>
+              <UserDashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route index element={<Profile />} />
+          <Route path="myorders" element={<Myorders />} />
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

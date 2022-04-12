@@ -8,6 +8,11 @@ import ActivationEmail from "./ActivationEmail/ActivationEmail";
 import ResetPassword from "./ResetPassword/ResetPassword";
 import NotFound from "./NotFound/NotFound";
 import Loading from "../components/Loading/Loading";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+//
+import UserDashboard from "./Manager/UserDashboard/UserDashboard";
+import Profile from "./Manager/UserDashboard/Profile/Profile";
+import Myorders from "./Manager/UserDashboard/MyOrders/Myorders";
 
 export {
   Home,
@@ -20,4 +25,8 @@ export {
   ResetPassword,
   NotFound,
   Loading,
+  PrivateRoute,
+  UserDashboard,
+  Profile,
+  Myorders,
 };

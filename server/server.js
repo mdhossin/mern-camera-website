@@ -9,6 +9,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const authRoutes = require("./routes/authRoutes");
 
 const userRoutes = require("./routes/userRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 const app = express();
 
@@ -28,6 +29,9 @@ app.use("/api", authRoutes);
 
 // // user routes
 app.use("/api", userRoutes);
+
+// upload routes
+app.use("/api", uploadRoutes);
 
 // Database connection
 connectDb();

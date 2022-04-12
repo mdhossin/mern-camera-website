@@ -139,7 +139,7 @@ const Header = () => {
                 <>
                   <NavDropdown.Item
                     className="nav__dropdown__item"
-                    // onClick={() => navigate("/dashboard")}
+                    onClick={() => navigate("/dashboard")}
                   >
                     Dashboard
                   </NavDropdown.Item>
