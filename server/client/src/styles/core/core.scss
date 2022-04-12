@@ -4,8 +4,11 @@
 
 @use "./header";
 @use "./mobile-menu";
+//home
 @use "./banner";
+@use "./home-banner";
 
+@use "./protected-area";
 // login and regiser
 @use "./register";
 @use "./activation-email";

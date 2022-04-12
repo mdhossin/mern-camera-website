@@ -1,0 +1,83 @@
+@use "./utils/" as *;
+
+.homeBanner {
+  &__container {
+    height: 100vh;
+
+    @media screen and (min-width: 968px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__left {
+      background: url("../../assets/images/home-banner-5.webp");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 100% 100%;
+      position: relative;
+      @include flex(center, center);
+
+      &__overlay {
+        position: absolute;
+        content: "";
+        background: hsla(41, 89%, 90%, 0.479);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+
+      > div {
+        padding: 1.5rem;
+        z-index: 10;
+
+        @include breakpoint-up("medium") {
+          padding: 1.5rem 3rem;
+        }
+        @include breakpoint-up("large") {
+          padding: 1.5rem 6rem;
+        }
+        @media screen and (min-width: 968px) {
+          padding: 2rem;
+        }
+        @include breakpoint-up("xlarge") {
+          padding: 3rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+          font-weight: 500;
+          color: #2c2c2c;
+
+          @include breakpoint-up("large") {
+            font-size: 1.3rem;
+          }
+        }
+
+        h1 {
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: #2c2c2c;
+          line-height: 1.4;
+          @include breakpoint-up("large") {
+            font-size: 2rem;
+          }
+
+          @media screen and (min-width: 968px) {
+            margin: 1.5rem 0;
+          }
+          @include breakpoint-up("xlarge") {
+            font-size: 2.5rem;
+          }
+        }
+
+        button {
+          width: 150px;
+        }
+      }
+    }
+
+    .right {
+      background: url("../../assets/images/home-banner-6.webp");
+    }
+  }
+}
