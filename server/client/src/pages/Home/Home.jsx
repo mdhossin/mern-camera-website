@@ -1,9 +1,14 @@
 import React from "react";
-import { Banner } from "../../components";
-import DiscountArea from "../../components/DiscountArea/DiscountArea";
-import HomeBanner from "../../components/HomeBanner/HomeBanner";
-import Products from "../../components/Products/Products";
-import ProtectedArea from "../../components/ProtectedArea/ProtectedArea";
+import {
+  Banner,
+  CompanyArea,
+  DiscountArea,
+  Footer,
+  HomeBanner,
+  NewsLetter,
+  Products,
+  ProtectedArea,
+} from "../../components";
 
 const Home = () => {
   return (
@@ -13,6 +18,9 @@ const Home = () => {
       <ProtectedArea />
       <Products />
       <DiscountArea />
+      <NewsLetter />
+      <CompanyArea />
+      <Footer />
     </div>
   );
 };

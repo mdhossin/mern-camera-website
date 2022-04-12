@@ -11,6 +11,9 @@
 @use "./section-title";
 @use "./products";
 @use "./discount-area";
+@use "./news-letter";
+@use "./company-area";
+
 // login and regiser
 @use "./register";
 @use "./activation-email";
@@ -19,3 +22,6 @@
 @use "./cart";
 @use "./cart-list";
 @use "./checkout";
+
+// footer
+@use "./footer";

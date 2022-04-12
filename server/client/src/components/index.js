@@ -4,4 +4,25 @@ import MobileMenu from "./MobileMenu/MobileMenu";
 import CartSummary from "./CartSummary/CartSummary";
 import CheckOut from "./Checkout/Checkout";
 
-export { Header, MobileMenu, Banner, CartSummary, CheckOut };
+import CompanyArea from "./CompanyArea/CompanyArea";
+import DiscountArea from "./DiscountArea/DiscountArea";
+import Footer from "./Footer/Footer";
+import HomeBanner from "./HomeBanner/HomeBanner";
+import NewsLetter from "./NewsLetter/NewsLetter";
+import Products from "./Products/Products";
+import ProtectedArea from "./ProtectedArea/ProtectedArea";
+
+export {
+  Header,
+  MobileMenu,
+  Banner,
+  CartSummary,
+  CheckOut,
+  CompanyArea,
+  DiscountArea,
+  Footer,
+  HomeBanner,
+  NewsLetter,
+  Products,
+  ProtectedArea,
+};

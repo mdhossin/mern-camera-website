@@ -1,0 +1,28 @@
+@use "./utils/" as *;
+
+.company {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+
+  &__container {
+    @include breakpoint-up("medium") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include breakpoint-up("xlarge") {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @include breakpoint-up("xxlarge") {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    > div {
+      border: 1px solid #e4e4e4;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

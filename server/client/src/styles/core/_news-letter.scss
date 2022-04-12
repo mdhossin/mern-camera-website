@@ -1,0 +1,56 @@
+@use "./utils/" as *;
+
+.newsletter {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+.news {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+      color: #333;
+      position: relative;
+      font-weight: 600;
+    }
+    p {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 3rem;
+    }
+    div {
+      width: 100%;
+      z-index: 10;
+      margin: 0 auto;
+    }
+
+    input {
+      height: 50px;
+      background: rgb(244, 244, 244);
+      display: block;
+      width: 100%;
+      border: 1xp solid gray;
+      font-size: 15px;
+      color: #333;
+      padding: 0 15px;
+      margin-bottom: 18px;
+      transition: all 0.5s ease;
+
+      margin-bottom: 1.5rem;
+
+      &:focus {
+        box-shadow: 0 0 6px rgb(0 0 0 / 20%);
+      }
+    }
+    .button {
+      width: 170px;
+      margin: 0 auto;
+    }
+  }
+}
