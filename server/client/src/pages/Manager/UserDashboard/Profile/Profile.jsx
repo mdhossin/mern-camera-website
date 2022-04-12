@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { AiOutlineCamera } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { useToasts } from "react-toast-notifications";
-
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
 import { isLength, isMatch } from "../../../../utils/validation";
 import Loading from "../../../../components/Loading/Loading";
+import UserList from "../../AdminDashboard/UserList/UserList";
 
 const Profile = () => {
   const { addToast } = useToasts();
@@ -275,7 +274,7 @@ const Profile = () => {
           Save Changes
         </button>
       </div>
-      {/* {token && user.role === 1 && <UserList />} */}
+      {token && user.role === 1 && <UserList />}
     </section>
   );
 };

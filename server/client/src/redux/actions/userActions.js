@@ -123,7 +123,7 @@ export const refreshToken = () => async (dispatch) => {
 };
 
 // user logout action
-export const logout = (token, navigate) => async (dispatch) => {
+export const logout = (token) => async (dispatch) => {
   const result = await checkTokenExp(token, dispatch);
   // console.log("logout action ", result, token);
   const access_token = result ? result : token;
@@ -200,32 +200,32 @@ export const googleLogin = (id_token) => async (dispatch) => {
 
 // user list for admin
 
-// export const userList = () => async (dispatch, getState) => {
-//   const token = getState().userLogin?.userInfo?.access_token;
-//   try {
-//     dispatch({
-//       type: USER_LIST_REQUEST,
-//     });
+export const userList = () => async (dispatch, getState) => {
+  const token = getState().userLogin?.userInfo?.access_token;
+  try {
+    dispatch({
+      type: USER_LIST_REQUEST,
+    });
 
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: token,
-//       },
-//     };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
 
-//     const { data } = await axios.get(`/user/users`, config);
-//     dispatch({
-//       type: USER_LIST_SUCCESS,
-//       payload: data,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: USER_LIST_FAIL,
-//       payload:
-//         error.response && error.response.data.message
-//           ? error.response.data.message
-//           : error.message,
-//     });
-//   }
-// };
+    const { data } = await axios.get(`/api/admin/users`, config);
+    dispatch({
+      type: USER_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

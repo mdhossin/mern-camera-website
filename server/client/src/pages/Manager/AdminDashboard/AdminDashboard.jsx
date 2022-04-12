@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 
-const UserDashboard = () => (
+const AdminDashboard = () => (
   <>
     <Sidebar />
     <div className="main">
@@ -14,4 +14,4 @@ const UserDashboard = () => (
   </>
 );
 
-export default UserDashboard;
+export default AdminDashboard;

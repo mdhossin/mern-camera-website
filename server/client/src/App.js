@@ -13,6 +13,8 @@ import {
   UserDashboard,
   Profile,
   Myorders,
+  AdminDashboard,
+  HomeAdmin,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -66,6 +68,28 @@ function App() {
           >
             <Route index element={<Profile />} />
             <Route path="myorders" element={<Myorders />} />
+          </Route>
+        )}
+
+        {user?.access_token && user?.user?.role === 1 && (
+          <Route
+            path="dashboard"
+            element={
+              <PrivateRoute>
+                <AdminDashboard />
+              </PrivateRoute>
+            }
+          >
+            <Route index element={<HomeAdmin />} />
+            {/* <Route path="users" element={<Profile />} />
+            <Route path="addproduct" element={<AddProduct />} />
+            <Route path="edit/:productId" element={<AddProduct />} />
+            <Route path="edit_user/:id" element={<EditUser />} />
+
+            <Route path="products" element={<AdminProductList />} />
+
+            <Route path="orders" element={<OrderList />} />
+            <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
           </Route>
         )}
 

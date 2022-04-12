@@ -9,10 +9,16 @@ import ResetPassword from "./ResetPassword/ResetPassword";
 import NotFound from "./NotFound/NotFound";
 import Loading from "../components/Loading/Loading";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-//
+// user dashboard
 import UserDashboard from "./Manager/UserDashboard/UserDashboard";
 import Profile from "./Manager/UserDashboard/Profile/Profile";
 import Myorders from "./Manager/UserDashboard/MyOrders/Myorders";
+
+// admin dashboard
+import AdminDashboard from "./Manager/AdminDashboard/AdminDashboard";
+import HomeAdmin from "./Manager/AdminDashboard/HomeAdmin/HomeAdmin";
+import UserList from "./Manager/AdminDashboard/UserList/UserList";
+import UserListItem from "./Manager/AdminDashboard/UserList/UserListItem/UserListItem";
 
 export {
   Home,
@@ -29,4 +35,8 @@ export {
   UserDashboard,
   Profile,
   Myorders,
+  AdminDashboard,
+  HomeAdmin,
+  UserList,
+  UserListItem,
 };
