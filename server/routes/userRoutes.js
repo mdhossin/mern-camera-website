@@ -19,7 +19,12 @@ router.post("/user/forgot_password", authCtrl.forgotPassword);
 router.get("/admin/users", auth, authAdmin, authCtrl.getAllUser);
 
 // // update user role only admin
-// router.patch("/admin/update_role/:id", auth, authAdmin, authCtrl.updateUsersRole);
+router.patch(
+  "/admin/update_role/:id",
+  auth,
+  authAdmin,
+  authCtrl.updateUsersRole
+);
 
 // // delete user only can admin
 router.delete("/admin/delete/:id", auth, authAdmin, authCtrl.deleteUser);

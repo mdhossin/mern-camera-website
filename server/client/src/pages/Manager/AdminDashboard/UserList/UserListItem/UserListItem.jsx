@@ -13,6 +13,7 @@ const UserListItem = ({ users, setCallback, callback }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState("");
   const { addToast } = useToasts();
+
   const handleDelete = async (id) => {
     try {
       if (user._id !== id) {

@@ -19,6 +19,7 @@ import AdminDashboard from "./Manager/AdminDashboard/AdminDashboard";
 import HomeAdmin from "./Manager/AdminDashboard/HomeAdmin/HomeAdmin";
 import UserList from "./Manager/AdminDashboard/UserList/UserList";
 import UserListItem from "./Manager/AdminDashboard/UserList/UserListItem/UserListItem";
+import EditUser from "./Manager/AdminDashboard/EditUser/EditUser";
 
 export {
   Home,
@@ -39,4 +40,5 @@ export {
   HomeAdmin,
   UserList,
   UserListItem,
+  EditUser,
 };
