@@ -1,0 +1,51 @@
+@use "./utils/" as *;
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  h2 {
+    font-size: 2rem;
+    color: #333;
+    position: relative;
+    font-weight: 600;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      transition: width 0.5s ease;
+      height: 2px;
+      background-color: var(--main-color);
+    }
+
+    @include breakpoint-up("medium") {
+      font-size: 2.5rem;
+      &::after {
+        width: 30%;
+      }
+    }
+    @include breakpoint-up("large") {
+      &::after {
+        width: 25%;
+      }
+    }
+    @include breakpoint-up("xlarge") {
+      &::after {
+        width: 20%;
+      }
+    }
+    @include breakpoint-up("xxlarge") {
+      &::after {
+        width: 15%;
+      }
+    }
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--main-color);
+    margin-top: 2rem;
+  }
+}

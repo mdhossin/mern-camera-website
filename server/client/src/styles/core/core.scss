@@ -7,8 +7,10 @@
 //home
 @use "./banner";
 @use "./home-banner";
-
 @use "./protected-area";
+@use "./section-title";
+@use "./products";
+
 // login and regiser
 @use "./register";
 @use "./activation-email";
