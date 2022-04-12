@@ -3,6 +3,7 @@ import { productData } from "../../fakeData";
 import ProductRating from "../ProductRating/ProductRating";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { FiShoppingCart } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   return (
@@ -12,7 +13,9 @@ const Products = () => {
       <div className="products__container grid">
         {productData.map((product, i) => (
           <div key={i} className="products__container__item">
-            <img src={product.img} alt="" />
+            <Link to="/">
+              <img src={product.img} alt="" />
+            </Link>
             <div>
               <h3>{product.name}</h3>
               <h5>${product.price}</h5>

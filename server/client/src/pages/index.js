@@ -6,6 +6,8 @@ import CartList from "./CartList/CartList";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import ActivationEmail from "./ActivationEmail/ActivationEmail";
 import ResetPassword from "./ResetPassword/ResetPassword";
+import NotFound from "./NotFound/NotFound";
+import Loading from "../components/Loading/Loading";
 
 export {
   Home,
@@ -16,4 +18,6 @@ export {
   ForgotPassword,
   ActivationEmail,
   ResetPassword,
+  NotFound,
+  Loading,
 };

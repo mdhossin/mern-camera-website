@@ -1,0 +1,12 @@
+@use "./utils/" as *;
+
+.notfound {
+  @include flex(center, center);
+  height: 100vh;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #444;
+  }
+}

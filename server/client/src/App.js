@@ -8,6 +8,7 @@ import {
   Register,
   ActivationEmail,
   ResetPassword,
+  NotFound,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -33,6 +34,8 @@ function App() {
         <Route path="/user/reset/:token" element={<ResetPassword />} />
 
         <Route path="/active/:activation_token" element={<ActivationEmail />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </ToastProvider>
   );
