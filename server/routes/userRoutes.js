@@ -5,7 +5,7 @@ const auth = require("../middlewares/auth");
 const router = express.Router();
 
 // update user
-// router.patch("/user/update", auth, authCtrl.updateUser);
+router.patch("/user/update", auth, authCtrl.updateUser);
 
 // reset password
 router.post("/user/reset", auth, authCtrl.resetPassword);
