@@ -8,6 +8,8 @@ const connectDb = require("./config/database");
 const errorHandler = require("./middlewares/errorHandler");
 const authRoutes = require("./routes/authRoutes");
 
+const userRoutes = require("./routes/userRoutes");
+
 const app = express();
 
 // middleware
@@ -25,19 +27,19 @@ app.use(
 app.use("/api", authRoutes);
 
 // // user routes
-// app.use("/user", userRoutes);
+app.use("/api", userRoutes);
 
 // Database connection
 connectDb();
 
 // delpoy code
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-//   });
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // declareing the port here
 const PORT = process.env.PORT || 5000;

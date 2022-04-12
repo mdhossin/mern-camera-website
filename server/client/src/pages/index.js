@@ -5,6 +5,7 @@ import Cart from "./Cart/Cart";
 import CartList from "./CartList/CartList";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import ActivationEmail from "./ActivationEmail/ActivationEmail";
+import ResetPassword from "./ResetPassword/ResetPassword";
 
 export {
   Home,
@@ -14,4 +15,5 @@ export {
   CartList,
   ForgotPassword,
   ActivationEmail,
+  ResetPassword,
 };

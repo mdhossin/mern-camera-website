@@ -14,7 +14,7 @@ const sendEmail = require("../config/sendMail");
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
 const CLIENT_URL = `http://localhost:3000`;
-// const CLIENT_URL = `https://quick-shop-mern.herokuapp.com`;
+// const CLIENT_URL = `https://mern-camera-shop.herokuapp.com`;
 
 const authCtrl = {
   async register(req, res, next) {
@@ -295,6 +295,13 @@ const authCtrl = {
       });
     try {
       const { password } = req.body;
+      if (password < 6) {
+        return next(
+          CustomErrorHandler.badRequest(
+            "Password must be at least 6 charactors long."
+          )
+        );
+      }
 
       const passwordHash = await bcrypt.hash(password, 12);
       // console.log(passwordHash);
@@ -332,7 +339,7 @@ const authCtrl = {
       const url = `${CLIENT_URL}/user/reset/${access_token}`;
 
       if (validateEmail(email)) {
-        sendMail(email, url, "Forgot password?");
+        sendEmail(email, url, "Forgot password?");
         return res.json({ message: "Success! Please check your email." });
       }
     } catch (err) {

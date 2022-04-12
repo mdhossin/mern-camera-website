@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useToasts } from "react-toast-notifications";
 import { Spinner } from "react-bootstrap";
 import { isEmail } from "../../utils/validation";
 
@@ -14,7 +14,8 @@ const ForgotPassword = () => {
 
   const { email, error, success } = data;
   const [loading, setLoading] = useState(false);
-  console.log(loading);
+
+  const { addToast } = useToasts();
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -27,26 +28,43 @@ const ForgotPassword = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("/user/forgot_password", { email });
+      const res = await axios.post("/api/user/forgot_password", { email });
       setLoading(false);
-      return setData({ ...data, error: "", success: res.data.message });
+      setData({ ...data, error: "", success: res.data.message });
     } catch (error) {
       setLoading(false);
       error.response.data.message &&
-        setData({ ...data, error: error.response.data.message, success: "" });
+        setData({
+          ...data,
+          error:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
+          success: "",
+        });
     }
   };
 
-  //   useEffect(() => {
-  //     if (error) {
-  //       addToast(error, { appearance: "error", autoDismiss: true });
-  //     } else if (success) {
-  //       addToast(success, {
-  //         appearance: "success",
-  //         autoDismiss: true,
-  //       });
-  //     }
-  //   }, [error, success, addToast]);
+  useEffect(() => {
+    if (error) {
+      addToast(error, { appearance: "error", autoDismiss: true });
+      setData({
+        email: "",
+        error: "",
+        success: "",
+      });
+    } else if (success) {
+      addToast(success, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      setData({
+        email: "",
+        error: "",
+        success: "",
+      });
+    }
+  }, [error, success, addToast]);
   return (
     <section className="section">
       <div className="contact">

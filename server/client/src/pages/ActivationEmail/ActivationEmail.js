@@ -14,9 +14,12 @@ const ActivationEmail = () => {
     if (activation_token) {
       const activationEmail = async () => {
         try {
-          const res = await axios.post("/api/active", {
-            activation_token,
-          });
+          const res = await axios.post(
+            "/api/active",
+            {
+              activation_token,
+            }
+          );
           // console.log(res, "res");
           setSuccess(res.data.message);
           setError("");

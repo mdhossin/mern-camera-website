@@ -7,6 +7,7 @@ import {
   Login,
   Register,
   ActivationEmail,
+  ResetPassword,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -28,6 +29,8 @@ function App() {
         <Route path="login" element={<Login />} />
 
         <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+
+        <Route path="/user/reset/:token" element={<ResetPassword />} />
 
         <Route path="/active/:activation_token" element={<ActivationEmail />} />
       </Routes>
