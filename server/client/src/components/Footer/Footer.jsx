@@ -1,13 +1,21 @@
 import React from "react";
 
 import { BsFacebook, BsPinterest } from "react-icons/bs";
-import { AiFillInstagram, AiOutlineMail } from "react-icons/ai";
-import { IoCallOutline, IoTimeOutline } from "react-icons/io5";
-import { GoLocation } from "react-icons/go";
+import { AiFillInstagram } from "react-icons/ai";
+
+import { Link } from "react-router-dom";
+import { logo } from "../../assets";
 
 const Footer = () => (
   <footer className="footer section">
     <div className="footer__container container-div grid">
+      <div className="footer__content logo">
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
+        <h3 className="footer__title">Contact Us</h3>
+        <p>No: 58 A, East Madison Street, Baltimore, MD, USA 4508</p>
+      </div>
       <div className="footer__content">
         <h3 className="footer__title">Help</h3>
         <ul className="footer__links">
@@ -101,29 +109,10 @@ const Footer = () => (
           </li>
         </ul>
       </div>
-      <div className="footer__content">
-        <h3 className="footer__title">Contact us</h3>
-        <ul className="footer__links footer__location">
-          <li>
-            <GoLocation />
-            No: 58 A, East Madison Street, Baltimore, MD, USA 4508
-          </li>
-          <li>
-            <IoCallOutline />
-            0000 - 123456789
-          </li>
-          <li>
-            <IoTimeOutline />
-            9.30AM - 7.30PM
-          </li>
-          <li>
-            <AiOutlineMail />
-            yummi@example.com
-          </li>
-        </ul>
-      </div>
+
       <div className="footer__content">
         <h3 className="footer__title">Connect with us</h3>
+        <p className="icam">icam@gmail.com</p>
         <ul className="footer__social">
           <li>
             <BsFacebook />
@@ -137,7 +126,7 @@ const Footer = () => (
         </ul>
       </div>
     </div>
-    <p className="footer__copyright">&copy; YUMMY. All Right Reserved 2022</p>
+    <p className="footer__copyright">&copy; ICAM. All Right Reserved 2022</p>
   </footer>
 );
 

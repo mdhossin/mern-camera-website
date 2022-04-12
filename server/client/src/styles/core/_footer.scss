@@ -2,8 +2,8 @@
 .footer {
   background-color: var(--color-grey);
   color: #2c2c2c;
-  padding-bottom: 2rem;
-  padding-bottom: 8rem;
+
+  padding-bottom: 5rem;
 
   &__container {
     row-gap: 2rem;
@@ -17,23 +17,47 @@
     @include breakpoint-up("xlarge") {
       grid-template-columns: repeat(5, 1fr);
     }
+
+    .logo {
+      h3 {
+        margin-top: 1rem;
+      }
+      p {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+    }
   }
 
-  &__logo,
   &__title {
-    font-size: var(--h3-font-size);
+    font-size: 22px;
     margin-bottom: 0.75rem;
+    color: var(--main-color);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -40%;
+      left: 8%;
+      transform: translateX(-50%);
+      width: 15%;
+      transition: width 0.5s ease;
+      height: 2px;
+      background-color: var(--main-color);
+    }
   }
 
   &__logo {
     display: inline-block;
-    font-weight: var(--font-semi-bold);
-    color: var(--title-color);
   }
 
   &__description,
   &__links {
-    font-size: var(--small-font-size);
+    font-size: 0.9rem;
+    font-weight: 500;
   }
 
   &__links {
@@ -42,62 +66,42 @@
 
     li {
       &:hover {
-        color: var(--theme-color);
+        color: var(--hover-color);
       }
     }
   }
 
   &__link {
-    color: #2c2c2c;
+    color: #333;
   }
 
   &__social {
-    display: grid;
-    row-gap: 0.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 
-    &__form {
-      width: 100%;
-
-      &__subscribe {
-        display: flex;
-      }
-
-      input {
-        flex: 3;
-      }
-
+    li {
       svg {
-        font-size: 1.2rem;
-      }
+        font-size: 22px;
+        transition: all 0.5s ease;
 
-      button {
-        flex: 1;
-        width: 100%;
-        text-transform: capitalize;
-        font-size: 16px;
-        background-color: #2c2c2c;
-        color: #fff;
-        padding: 0;
-        height: 50px;
-        line-height: 50px;
-        transition: var(--transition);
         &:hover {
-          background-color: transparent;
-          border: 1px solid #2c2c2c;
-          color: #2c2c2c;
+          color: var(--hover-color);
+          cursor: pointer;
         }
       }
-    }
-    &-link {
-      font-size: 1.25rem;
-      color: #2c2c2c;
     }
   }
 
   &__copyright {
     margin-top: 5rem;
     text-align: center;
-    font-size: var(--small-font-size);
-    color: #2c2c2c;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  .icam {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
   }
 }

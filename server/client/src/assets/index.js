@@ -7,6 +7,7 @@ import companySix from "./images/company-6.webp";
 import bannerOne from "./images/banner-1.webp";
 import bannerTwo from "./images/banner-2.webp";
 import bannerThree from "./images/banner-3.webp";
+import logo from "./images/logo.png";
 
 export {
   companyFive,
@@ -18,4 +19,5 @@ export {
   bannerOne,
   bannerThree,
   bannerTwo,
+  logo,
 };

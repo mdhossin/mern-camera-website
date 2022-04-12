@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { USER_LOGOUT_RESET } from "../../redux/constants/userConstants";
 import { logout } from "../../redux/actions/userActions";
+import { logo } from "../../assets";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -74,13 +75,9 @@ const Header = () => {
   return (
     <header className="header" ref={headerRef}>
       <nav className="nav container-div">
-        <a href="#home" className="nav__logo">
-          <img
-            width="100"
-            src="https://cdn.shopify.com/s/files/1/0040/0323/3892/files/logo.png?v=1543486832"
-            alt=""
-          />
-        </a>
+        <Link to="/" className="nav__logo">
+          <img width="100" src={logo} alt="Logo" />
+        </Link>
 
         <div className="nav__menu">
           <ul className="nav__list nav__menu__list">
