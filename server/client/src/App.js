@@ -81,15 +81,15 @@ function App() {
             }
           >
             <Route index element={<HomeAdmin />} />
-            {/* <Route path="users" element={<Profile />} />
-            <Route path="addproduct" element={<AddProduct />} />
-            <Route path="edit/:productId" element={<AddProduct />} />
-            <Route path="edit_user/:id" element={<EditUser />} />
+            <Route path="users" element={<Profile />} />
+            {/* <Route path="addproduct" element={<AddProduct />} /> */}
+            {/* <Route path="edit/:productId" element={<AddProduct />} /> */}
+            {/* <Route path="edit_user/:id" element={<EditUser />} /> */}
 
-            <Route path="products" element={<AdminProductList />} />
+            {/* <Route path="products" element={<AdminProductList />} /> */}
 
-            <Route path="orders" element={<OrderList />} />
-            <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
+            {/* <Route path="orders" element={<OrderList />} /> */}
+            {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
           </Route>
         )}
 

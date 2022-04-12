@@ -22,6 +22,6 @@ router.get("/admin/users", auth, authAdmin, authCtrl.getAllUser);
 // router.patch("/admin/update_role/:id", auth, authAdmin, authCtrl.updateUsersRole);
 
 // // delete user only can admin
-// router.delete("/admin/delete/:id", auth, authAdmin, authCtrl.deleteUser);
+router.delete("/admin/delete/:id", auth, authAdmin, authCtrl.deleteUser);
 
 module.exports = router;

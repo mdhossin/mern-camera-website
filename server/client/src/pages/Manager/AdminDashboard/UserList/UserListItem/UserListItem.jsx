@@ -7,8 +7,8 @@ import axios from "axios";
 import { useToasts } from "react-toast-notifications";
 
 const UserListItem = ({ users, setCallback, callback }) => {
-  const auth = useSelector((state) => state.userLogin.userInfo);
-  const token = useSelector((state) => state.userLogin.userInfo.access_token);
+  const auth = useSelector((state) => state.userLogin?.userInfo);
+  const token = useSelector((state) => state.userLogin?.userInfo?.access_token);
   const { user } = auth;
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState("");
@@ -17,7 +17,7 @@ const UserListItem = ({ users, setCallback, callback }) => {
     try {
       if (user._id !== id) {
         if (window.confirm("Are you sure you want to delete this account?")) {
-          const { data } = await axios.delete(`/user/delete/${id}`, {
+          const { data } = await axios.delete(`/api/admin/delete/${id}`, {
             headers: { Authorization: token },
           });
 
