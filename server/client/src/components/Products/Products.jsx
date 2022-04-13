@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import ProductRating from "../ProductRating/ProductRating";
 import SectionTitle from "../SectionTitle/SectionTitle";
-import { FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProduct } from "../../redux/actions/productActions";
 

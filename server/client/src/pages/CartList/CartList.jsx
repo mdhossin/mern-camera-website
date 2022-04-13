@@ -2,19 +2,14 @@ import React from "react";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-const CartList = ({
-  cartItems,
-  decreaseQuantity,
-  increaseQuantity,
-  deleteCartItems,
-}) => {
+const CartList = ({ cartItems, qtyChangeHandler, deleteCartItems }) => {
   console.log(cartItems);
   return (
     <div className="cart__header__body__list">
       {cartItems?.map((item, index) => (
         <div key={index} className="cart__header__body__list__item">
           <img
-            src={item.imageUrl}
+            src={item.image}
             className="cart__header__body__list__item-img"
             alt=""
           />
@@ -38,11 +33,13 @@ const CartList = ({
             <div className="cart__header__body__list__item__details__price">
               <div className="cart__header__body__list__item__details__price__wrapper">
                 <select
-                  value={item.qty}
-                  // onChange={(e) => qtyChangeHandler(item.product, e.target.value)}
+                  value={item.quantity}
+                  onChange={(e) =>
+                    qtyChangeHandler(item.product, e.target.value)
+                  }
                   className="cartItem__select"
                 >
-                  {[...Array(item?.countInStock).keys()].map((x) => (
+                  {[...Array(item?.stock).keys()].map((x) => (
                     <option key={x + 1} value={x + 1}>
                       {x + 1}
                     </option>

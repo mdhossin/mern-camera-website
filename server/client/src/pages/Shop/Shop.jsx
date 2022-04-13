@@ -1,18 +1,9 @@
 import React, { useEffect } from "react";
-
-import { FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  SectionTitle,
-  ProductRating,
-  Footer,
-  Loading,
-  Loader,
-} from "../../components";
-
+import { SectionTitle, Footer, Loader } from "../../components";
 import { getAllProduct } from "../../redux/actions/productActions";
 import SingleItem from "./SingleItem/SingleItem";
+
 const Shop = () => {
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.allProducts);

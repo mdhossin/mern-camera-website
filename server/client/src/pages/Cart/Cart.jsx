@@ -1,62 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
 import { CartSummary, CheckOut } from "../../components";
+import {
+  addItemsToCart,
+  removeItemsFromCart,
+} from "../../redux/actions/cartActions";
 import CartList from "../CartList/CartList";
 
 const Cart = ({ setCartOpen }) => {
-  const increaseQuantity = () => {};
-
-  const decreaseQuantity = () => {};
-
-  const deleteCartItems = () => {};
-
-  const cartItems = [
-    {
-      imageUrl:
-        "https://res.cloudinary.com/dsfcv3v5f/image/upload/v1649307946/yummy-food-delivery/ma4yxqaeoxtyu4pyd8bj.png",
-      name: "Headphone",
-      totalPrice: 200,
-      quantity: 4,
-    },
-    {
-      imageUrl:
-        "https://res.cloudinary.com/dsfcv3v5f/image/upload/v1649307946/yummy-food-delivery/ma4yxqaeoxtyu4pyd8bj.png",
-      name: "Watch",
-      totalPrice: 300,
-      quantity: 3,
-    },
-    {
-      imageUrl:
-        "https://res.cloudinary.com/dsfcv3v5f/image/upload/v1649307946/yummy-food-delivery/ma4yxqaeoxtyu4pyd8bj.png",
-      name: "Smart Watch",
-      totalPrice: 500,
-      quantity: 6,
-    },
-    {
-      imageUrl:
-        "https://res.cloudinary.com/dsfcv3v5f/image/upload/v1649307946/yummy-food-delivery/ma4yxqaeoxtyu4pyd8bj.png",
-      name: "Smart Watch",
-      totalPrice: 500,
-      quantity: 6,
-    },
-    {
-      imageUrl:
-        "https://res.cloudinary.com/dsfcv3v5f/image/upload/v1649307946/yummy-food-delivery/ma4yxqaeoxtyu4pyd8bj.png",
-      name: "Smart Watch",
-      totalPrice: 500,
-      quantity: 6,
-    },
-  ];
-
-  // const checkoutHandler = () => {
-  //   history.push("/login?redirect=shipping");
-  // };
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
 
   const cartTotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
+
+  const qtyChangeHandler = (id, quantity) => {
+    dispatch(addItemsToCart(id, quantity));
+  };
+
+  const deleteCartItems = (id) => {
+    dispatch(removeItemsFromCart(id));
+  };
 
   return (
     <div className="cart">
@@ -72,11 +40,9 @@ const Cart = ({ setCartOpen }) => {
       {cartItems.length > 0 ? (
         <div className="cart__header__body">
           <CartList
-            increaseQuantity={increaseQuantity}
             deleteCartItems={deleteCartItems}
-            decreaseQuantity={decreaseQuantity}
             cartItems={cartItems}
-            // handleRemoveFromCart={handleRemoveFromCart}
+            qtyChangeHandler={qtyChangeHandler}
           />
         </div>
       ) : (
