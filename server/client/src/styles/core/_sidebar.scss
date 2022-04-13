@@ -75,6 +75,7 @@
           transition: all 0.5s ease;
           &:hover {
             color: var(--main-color);
+            transform: scaleX(1.05);
           }
           a {
             display: flex;
@@ -172,6 +173,7 @@
 
         &:hover {
           color: var(--main-color);
+          transform: scaleX(1.05);
         }
 
         a {

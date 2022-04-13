@@ -32,6 +32,11 @@
 // user dashboard
 @use "./sidebar";
 @use "./my-orders";
+
+// both user and admin dashboard use
 @use "./profile";
 
+// admin dashboard
 @use "./user-list-item";
+
+@use "./add-product";

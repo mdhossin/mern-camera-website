@@ -1,0 +1,171 @@
+@use "./utils/" as *;
+
+.addproduct {
+  margin-bottom: 4rem;
+  padding-top: 2.5rem;
+  @media screen and(min-width: 1080px) {
+    padding-top: 7rem;
+  }
+  &__title {
+    color: #333;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  &__form {
+    gap: 0;
+
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    label {
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    textarea {
+      font-size: 15px;
+
+      width: 100%;
+      padding: 10px;
+
+      resize: vertical;
+      color: #2c2c2c;
+      border: 1px solid #e4e4e4 !important;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    &__right {
+      h4 {
+        margin-top: 0.8rem;
+        font-size: 15px;
+        font-weight: 500;
+        color: #333;
+      }
+      &__box {
+        display: grid;
+        margin-top: 20px;
+        place-items: center;
+        border: 1px dashed #799cd9;
+        /* padding: 36px 48px; */
+        position: relative;
+        height: 300px;
+        width: 300px;
+        background: #fbfbff;
+        border-radius: 20px;
+        &__upload {
+          // display: flex;
+          // flex-wrap: wrap;
+          // label {
+          //   cursor: pointer;
+
+          //   :hover {
+          //     opacity: 0.8;
+          //   }
+          // }
+          // > input {
+          //   display: none;
+          // }
+
+          // &__preview {
+          //   position: relative;
+          //   /* cursor: pointer; */
+          //   &-uploaded {
+          //     height: 300px;
+          //     width: 300px;
+          //     object-fit: cover;
+          //     border-radius: 20px;
+          //   }
+          //   &__close {
+          //     background: #333;
+          //     padding: 6px;
+          //     color: #fff;
+          //     font-size: 1.8rem;
+          //     border-radius: 5px;
+          //     opacity: 0.8;
+          //     position: absolute;
+          //     z-index: 10;
+          //     right: 0;
+          //     top: 0;
+          //     cursor: pointer;
+          //     :hover {
+          //       opacity: 1;
+          //     }
+          //   }
+          // }
+
+          // .upload {
+          //   max-width: 450px;
+          //   height: 500px;
+          //   width: 100%;
+          //   border: 1px solid #ddd;
+          //   padding: 15px;
+          //   margin: 20px;
+          //   position: relative;
+          // }
+
+          #file_up {
+            width: 100%;
+            height: 100%;
+            outline: none;
+
+            &::before {
+              content: url("../../assets/images/upload-1.png");
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              background: white;
+
+              text-align: center;
+              cursor: pointer;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+
+          #file_img {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            img {
+              margin-top: 0.5rem;
+              width: 280px;
+              height: 280px;
+
+              object-fit: contain;
+            }
+
+            span {
+              position: absolute;
+              top: -13px;
+              right: -13px;
+              background: white;
+              border: 1px solid #ddd;
+              border-radius: 50%;
+              padding: 6px 10px;
+              cursor: pointer;
+              font-weight: 900;
+              color: crimson;
+            }
+          }
+        }
+      }
+    }
+
+    &__button {
+      width: 160px;
+    }
+  }
+}

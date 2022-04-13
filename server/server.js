@@ -7,7 +7,7 @@ const path = require("path");
 const connectDb = require("./config/database");
 const errorHandler = require("./middlewares/errorHandler");
 const authRoutes = require("./routes/authRoutes");
-
+const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 
@@ -32,6 +32,8 @@ app.use("/api", userRoutes);
 
 // upload routes
 app.use("/api", uploadRoutes);
+
+app.use("/api", productRoutes);
 
 // Database connection
 connectDb();
