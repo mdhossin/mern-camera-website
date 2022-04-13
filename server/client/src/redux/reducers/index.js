@@ -5,7 +5,7 @@ import {
   userLogoutReducer,
   userRegisterReducer,
 } from "./userReducer";
-import { createProductReducer } from "./productReducer";
+import { createProductReducer, productReducer } from "./productReducer";
 
 export default combineReducers({
   userLogin: userLoginReducer,
@@ -13,4 +13,5 @@ export default combineReducers({
   userLogout: userLogoutReducer,
   userList: userListReducer,
   createProduct: createProductReducer,
+  allProducts: productReducer,
 });

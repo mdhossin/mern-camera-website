@@ -9,6 +9,7 @@ import {
   createProduct,
   updateProduct,
 } from "../../../../redux/actions/productActions";
+import { Spinner } from "react-bootstrap";
 const initialstate = {
   name: "",
   description: "",
@@ -24,8 +25,10 @@ const AddProduct = () => {
   const dispatch = useDispatch();
 
   const token = useSelector((state) => state.userLogin?.userInfo?.access_token);
-  const { products, error } = useSelector((state) => state.createProduct);
-  // const productData = useSelector((state) => state.adminProducts);
+  const { products, error, loading } = useSelector(
+    (state) => state.createProduct
+  );
+  const productData = useSelector((state) => state.allProducts);
 
   const [onEdit, setOnEdit] = useState(false);
 
@@ -43,18 +46,18 @@ const AddProduct = () => {
     if (productId) {
       setOnEdit(true);
 
-      // productData?.products?.forEach((product) => {
-      //   if (product?._id === productId) {
-      //     setProduct(product);
-      //     setImages(product?.images);
-      //   }
-      // });
+      productData?.products?.forEach((product) => {
+        if (product?._id === productId) {
+          setProduct(product);
+          setImages(product?.images);
+        }
+      });
     } else {
       setOnEdit(false);
       setProduct(initialstate);
       setImages(false);
     }
-  }, [productId]);
+  }, [productId, productData?.products]);
 
   // image upload here
   const handleUpload = async (e) => {
@@ -128,10 +131,10 @@ const AddProduct = () => {
     e.preventDefault();
     if (onEdit) {
       // update prduct call here
-      dispatch(updateProduct({ ...product, images }, _id));
+      dispatch(updateProduct({ ...product, images }, _id, addToast));
     } else {
       // create product api call here
-      dispatch(createProduct({ ...product, images }, navigate));
+      dispatch(createProduct({ ...product, images }, navigate, addToast));
     }
   };
 
@@ -142,11 +145,6 @@ const AddProduct = () => {
       addToast(error, { appearance: "error", autoDismiss: true });
     } else if (products) {
       dispatch({ type: CREATE_PRODUCT_RESET });
-      addToast(products.message, {
-        appearance: "success",
-        autoDismiss: true,
-      });
-      // navigate(redirect);
     }
   }, [products, addToast, error, dispatch]);
 
@@ -265,7 +263,11 @@ const AddProduct = () => {
               className="button"
               type="submit"
             >
-              {onEdit ? "Update" : "Public Now"}
+              {loading ? (
+                <Spinner animation="border" size="sm" />
+              ) : (
+                <>{onEdit ? "Update" : "Public Now"}</>
+              )}
             </button>
           </div>
         </form>

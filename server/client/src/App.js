@@ -17,6 +17,7 @@ import {
   HomeAdmin,
   EditUser,
   AddProduct,
+  AllProducts,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -86,9 +87,9 @@ function App() {
             <Route path="users" element={<Profile />} />
             <Route path="edit_user/:id" element={<EditUser />} />
             <Route path="addproduct" element={<AddProduct />} />
-            {/* <Route path="edit/:productId" element={<AddProduct />} /> */}
+            <Route path="edit/:productId" element={<AddProduct />} />
 
-            {/* <Route path="products" element={<AdminProductList />} /> */}
+            <Route path="products" element={<AllProducts />} />
 
             {/* <Route path="orders" element={<OrderList />} /> */}
             {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}

@@ -20,7 +20,7 @@ import {
 
 // create product action
 export const createProduct =
-  (product, navigate) => async (dispatch, getState) => {
+  (product, navigate, addToast) => async (dispatch, getState) => {
     const token = getState().userLogin?.userInfo?.access_token;
     try {
       dispatch({
@@ -40,6 +40,10 @@ export const createProduct =
         type: CREATE_PRODUCT_SUCCESS,
         payload: data,
       });
+      addToast(data?.message, {
+        appearance: "success",
+        autoDismiss: true,
+      });
       navigate("/dashboard/products");
     } catch (error) {
       dispatch({
@@ -52,39 +56,45 @@ export const createProduct =
     }
   };
 // update product action and reuse constants from create product
-export const updateProduct = (product, id) => async (dispatch, getState) => {
-  const token = getState().userLogin?.userInfo?.access_token;
-  try {
-    dispatch({
-      type: CREATE_PRODUCT_REQUEST,
-    });
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    };
+export const updateProduct =
+  (product, id, addToast) => async (dispatch, getState) => {
+    const token = getState().userLogin?.userInfo?.access_token;
+    try {
+      dispatch({
+        type: CREATE_PRODUCT_REQUEST,
+      });
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      };
 
-    const { data } = await axios.put(`/api/products/${id}`, product, config);
-    // console.log(data, access_token, "logout action");
+      const { data } = await axios.put(`/api/products/${id}`, product, config);
+      // console.log(data, access_token, "logout action");
 
-    dispatch({
-      type: CREATE_PRODUCT_SUCCESS,
-      payload: data,
-    });
-    dispatch({
-      type: CREATE_PRODUCT_RESET,
-    });
-  } catch (error) {
-    dispatch({
-      type: CREATE_PRODUCT_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      dispatch({
+        type: CREATE_PRODUCT_SUCCESS,
+        payload: data,
+      });
+
+      addToast(data?.message, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      dispatch({
+        type: CREATE_PRODUCT_RESET,
+      });
+    } catch (error) {
+      dispatch({
+        type: CREATE_PRODUCT_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 // delete product from DB
 export const deleteProduct = (token, id) => async (dispatch) => {
@@ -143,11 +153,11 @@ export const getProductById = (id) => async (dispatch) => {
 };
 
 // Get All Products For Admin
-export const getAdminProduct = () => async (dispatch) => {
+export const getAllProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTS_LOADING });
 
-    const { data } = await axios.get("/api/admin/products");
+    const { data } = await axios.get("/api/products");
 
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,

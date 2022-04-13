@@ -1,0 +1,102 @@
+@use "./utils/" as *;
+
+.allProducts {
+  padding-bottom: 5rem;
+  padding-top: 2.5rem;
+  @media screen and (min-width: 1080px) {
+    padding-top: 7rem;
+  }
+  h2 {
+    font-weight: 500;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 3rem;
+  }
+
+  &__container {
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint-up("xlarge") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &__item {
+      transition: all 0.5s ease;
+
+      &__content {
+        background-color: rgb(244, 244, 244);
+        padding: 32px;
+      }
+
+      &-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      img {
+        max-width: 100%;
+      }
+      border: 1px solid #e4e4e4;
+
+      div {
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #2c2c2c;
+
+          transition: var(--transition);
+          &:hover {
+            cursor: pointer;
+            color: var(--hover-color);
+          }
+        }
+
+        h5 {
+          font-size: 18px;
+          font-weight: 700;
+          color: var(--main-color);
+          margin: 1rem 0;
+          font-family: "Roboto", sans-serif;
+        }
+        p {
+          font-size: 18px;
+          font-weight: 500;
+          color: #333;
+          font-family: "Roboto", sans-serif;
+        }
+      }
+
+      &:hover {
+        border: 1px solid var(--hover-color);
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .button {
+      flex: 1;
+      height: 45px;
+      line-height: 45px;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .delete {
+      background-color: var(--hover-color);
+
+      &:hover {
+        background-color: var(--main-color);
+      }
+    }
+  }
+}

@@ -21,6 +21,7 @@ import UserList from "./Manager/AdminDashboard/UserList/UserList";
 import UserListItem from "./Manager/AdminDashboard/UserList/UserListItem/UserListItem";
 import EditUser from "./Manager/AdminDashboard/EditUser/EditUser";
 import AddProduct from "./Manager/AdminDashboard/AddProduct/AddProduct";
+import AllProducts from "./Manager/AdminDashboard/AllProducts/AllProducts";
 export {
   Home,
   Register,
@@ -42,4 +43,5 @@ export {
   UserListItem,
   EditUser,
   AddProduct,
+  AllProducts,
 };
