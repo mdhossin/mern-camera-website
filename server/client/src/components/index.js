@@ -11,6 +11,9 @@ import HomeBanner from "./HomeBanner/HomeBanner";
 import NewsLetter from "./NewsLetter/NewsLetter";
 import Products from "./Products/Products";
 import ProtectedArea from "./ProtectedArea/ProtectedArea";
+import SectionTitle from "./SectionTitle/SectionTitle";
+import ProductRating from "./ProductRating/ProductRating";
+import Loading from "./Loading/Loading";
 
 export {
   Header,
@@ -25,4 +28,7 @@ export {
   NewsLetter,
   Products,
   ProtectedArea,
+  SectionTitle,
+  ProductRating,
+  Loading,
 };

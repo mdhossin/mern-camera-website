@@ -13,8 +13,8 @@ import { Spinner } from "react-bootstrap";
 const initialstate = {
   name: "",
   description: "",
-  Stock: null,
-  price: null,
+  Stock: 0,
+  price: 0,
 };
 const AddProduct = () => {
   const { productId } = useParams();

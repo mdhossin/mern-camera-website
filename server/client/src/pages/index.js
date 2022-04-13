@@ -9,6 +9,7 @@ import ResetPassword from "./ResetPassword/ResetPassword";
 import NotFound from "./NotFound/NotFound";
 import Loading from "../components/Loading/Loading";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Shop from "./Shop/Shop";
 // user dashboard
 import UserDashboard from "./Manager/UserDashboard/UserDashboard";
 import Profile from "./Manager/UserDashboard/Profile/Profile";
@@ -44,4 +45,5 @@ export {
   EditUser,
   AddProduct,
   AllProducts,
+  Shop,
 };

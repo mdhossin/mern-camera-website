@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { productData } from "../../fakeData";
 import ProductRating from "../ProductRating/ProductRating";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { FiShoppingCart } from "react-icons/fi";
@@ -19,7 +18,7 @@ const Products = () => {
       <SectionTitle title="Featured Products" desc="24/7 Security System" />
 
       <div className="products__container grid">
-        {productsData.map((product) => (
+        {productsData?.slice(0, 6).map((product) => (
           <div key={product?._id} className="products__container__item">
             <Link to="/">
               <img src={product?.images?.url} alt="" />

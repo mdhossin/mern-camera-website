@@ -18,6 +18,7 @@ import {
   EditUser,
   AddProduct,
   AllProducts,
+  Shop,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -59,6 +60,8 @@ function App() {
             user?.access_token ? <Navigate to="/" /> : <ActivationEmail />
           }
         />
+
+        <Route path="shop" element={<Shop />} />
 
         {user?.access_token && user?.user?.role === 0 && (
           <Route
