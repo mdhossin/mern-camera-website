@@ -10,6 +10,7 @@ import {
   updateProduct,
 } from "../../../../redux/actions/productActions";
 import { Spinner } from "react-bootstrap";
+import { Loader } from "../../../../components";
 const initialstate = {
   name: "",
   description: "",
@@ -245,7 +246,7 @@ const AddProduct = () => {
                 />
                 {isLoading ? (
                   <div id="file_img">
-                    <Loading />
+                    <Loader inline backdrop />
                   </div>
                 ) : (
                   <div id="file_img" style={styleUpload}>

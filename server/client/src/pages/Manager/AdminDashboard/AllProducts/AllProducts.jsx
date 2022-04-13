@@ -6,10 +6,12 @@ import {
   getAllProduct,
   deleteProduct,
 } from "../../../../redux/actions/productActions";
+import { Loader, Loading } from "../../../../components";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
-  const productsData = useSelector((state) => state.allProducts?.products);
+  const productsData = useSelector((state) => state.allProducts);
+  const { products, loading, error } = productsData;
   const token = useSelector((state) => state.userLogin?.userInfo?.access_token);
   const [callback, setCallback] = useState(false);
   useEffect(() => {
@@ -44,35 +46,53 @@ const AllProducts = () => {
       <h2>All Products</h2>
 
       <div className="allProducts__container grid">
-        {productsData.map((product) => (
-          <div key={product?._id} className="allProducts__container__item">
-            <Link to="/">
-              <img src={product?.images?.url} alt="" />
-            </Link>
-            <div className="allProducts__container__item__content">
-              <h3>{product.name}</h3>
-              <div className="allProducts__container__item-price">
-                <h5>${product.price}</h5>
-                <p>Stock : {product.Stock}</p>
-              </div>
-              <p>{product.description.slice(0, 30)}...</p>
-              <div className="allProducts__buttons">
-                <Link className="button" to={`/dashboard/edit/${product._id}`}>
-                  Edit
+        {loading ? (
+          <Loader backdrop />
+        ) : error ? (
+          <h2 style={{ color: "#333", fontWeight: "500", textAlign: "center" }}>
+            {error}
+          </h2>
+        ) : (
+          <>
+            {products?.map((product) => (
+              <div key={product?._id} className="allProducts__container__item">
+                <Link to="/">
+                  <img src={product?.images?.url} alt="" />
                 </Link>
-                <button
-                  className="button delete"
-                  onClick={() =>
-                    deleteHandler(product._id, product.images.public_id)
-                  }
-                >
-                  Delete
-                </button>
+                <div className="allProducts__container__item__content">
+                  <h3>{product.name}</h3>
+                  <div className="allProducts__container__item-price">
+                    <h5>${product.price}</h5>
+                    <p>Stock : {product.Stock}</p>
+                  </div>
+                  <p>{product.description.slice(0, 30)}...</p>
+                  <div className="allProducts__buttons">
+                    <Link
+                      className="button"
+                      to={`/dashboard/edit/${product._id}`}
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      className="button delete"
+                      onClick={() =>
+                        deleteHandler(product._id, product.images.public_id)
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))}
+          </>
+        )}
       </div>
+      {products?.length === 0 && (
+        <h3 style={{ color: "#333", fontWeight: "500", textAlign: "center" }}>
+          No product found.
+        </h3>
+      )}
     </section>
   );
 };

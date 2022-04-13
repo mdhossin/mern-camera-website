@@ -14,6 +14,7 @@ import ProtectedArea from "./ProtectedArea/ProtectedArea";
 import SectionTitle from "./SectionTitle/SectionTitle";
 import ProductRating from "./ProductRating/ProductRating";
 import Loading from "./Loading/Loading";
+import Loader from "./Loader/Loader";
 
 export {
   Header,
@@ -31,4 +32,5 @@ export {
   SectionTitle,
   ProductRating,
   Loading,
+  Loader,
 };

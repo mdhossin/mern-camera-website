@@ -3,7 +3,13 @@ import React, { useEffect } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { SectionTitle, ProductRating, Footer, Loading } from "../../components";
+import {
+  SectionTitle,
+  ProductRating,
+  Footer,
+  Loading,
+  Loader,
+} from "../../components";
 
 import { getAllProduct } from "../../redux/actions/productActions";
 const Shop = () => {
@@ -22,9 +28,13 @@ const Shop = () => {
 
         <div className="products__container grid">
           {loading ? (
-            <Loading />
+            <Loader backdrop />
           ) : error ? (
-            <h2>{error}</h2>
+            <h2
+              style={{ color: "#333", fontWeight: "500", textAlign: "center" }}
+            >
+              {error}
+            </h2>
           ) : (
             <>
               {products?.map((product) => (
@@ -47,6 +57,11 @@ const Shop = () => {
             </>
           )}
         </div>
+        {products?.length === 0 && (
+          <h3 style={{ color: "#333", fontWeight: "500", textAlign: "center" }}>
+            No product found.
+          </h3>
+        )}
       </section>
       <Footer />
     </>

@@ -7,6 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { isLength, isMatch } from "../../../../utils/validation";
 import Loading from "../../../../components/Loading/Loading";
 import UserList from "../../AdminDashboard/UserList/UserList";
+import { Loader } from "../../../../components";
 
 const Profile = () => {
   const { addToast } = useToasts();
@@ -184,7 +185,9 @@ const Profile = () => {
       <div className="profile__container grid">
         <div className="profile__container__img">
           {loading ? (
-            <Loading />
+            <div>
+              <Loader inline backdrop />
+            </div>
           ) : (
             <img src={avatar ? avatar : user.avatar} alt="logo" />
           )}
