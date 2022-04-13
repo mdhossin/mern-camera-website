@@ -12,6 +12,7 @@ import {
 } from "../../components";
 
 import { getAllProduct } from "../../redux/actions/productActions";
+import SingleItem from "./SingleItem/SingleItem";
 const Shop = () => {
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.allProducts);
@@ -38,21 +39,7 @@ const Shop = () => {
           ) : (
             <>
               {products?.map((product) => (
-                <div key={product?._id} className="products__container__item">
-                  <Link to="/">
-                    <img src={product?.images?.url} alt="" />
-                  </Link>
-                  <div>
-                    <h3>{product.name}</h3>
-                    <h5>${product.price}</h5>
-                    <ProductRating ratingValue={product.ratings} />
-                    <div>
-                      <button className="button">
-                        <FiShoppingCart /> Add to cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <SingleItem key={product._id} product={product} />
               ))}
             </>
           )}

@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllProduct } from "../../redux/actions/productActions";
 
 import Loader from "../Loader/Loader";
+import SingleProduct from "./SingleProduct/SingleProduct";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -30,21 +31,7 @@ const Products = () => {
         ) : (
           <>
             {products?.map((product) => (
-              <div key={product?._id} className="products__container__item">
-                <Link to="/">
-                  <img src={product?.images?.url} alt="" />
-                </Link>
-                <div>
-                  <h3>{product.name}</h3>
-                  <h5>${product.price}</h5>
-                  <ProductRating ratingValue={product.ratings} />
-                  <div>
-                    <button className="button">
-                      <FiShoppingCart /> Add to cart
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <SingleProduct key={product._id} product={product} />
             ))}
           </>
         )}

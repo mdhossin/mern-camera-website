@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { isLength, isMatch } from "../../../../utils/validation";
-import Loading from "../../../../components/Loading/Loading";
+
 import UserList from "../../AdminDashboard/UserList/UserList";
 import { Loader } from "../../../../components";
 
