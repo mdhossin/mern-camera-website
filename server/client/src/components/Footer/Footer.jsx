@@ -2,21 +2,29 @@ import React from "react";
 
 import { BsFacebook, BsPinterest } from "react-icons/bs";
 import { AiFillInstagram } from "react-icons/ai";
-
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
 
 const Footer = () => (
   <footer className="footer section">
-    <div className="footer__container container-div grid">
-      <div className="footer__content logo">
+    <motion.div className="footer__container container-div grid">
+      <motion.div
+        whileInView={{ opacity: [0, 1] }}
+        transition={{ duration: 1 }}
+        className="footer__content logo"
+      >
         <Link to="/">
           <img src={logo} alt="" />
         </Link>
         <h3 className="footer__title">Contact Us</h3>
         <p>No: 58 A, East Madison Street, Baltimore, MD, USA 4508</p>
-      </div>
-      <div className="footer__content">
+      </motion.div>
+      <motion.div
+        whileInView={{ opacity: [0, 1] }}
+        transition={{ duration: 1 }}
+        className="footer__content"
+      >
         <h3 className="footer__title">Help</h3>
         <ul className="footer__links">
           <li>
@@ -45,9 +53,13 @@ const Footer = () => (
             </a>
           </li>
         </ul>
-      </div>
+      </motion.div>
 
-      <div className="footer__content">
+      <motion.div
+        whileInView={{ opacity: [0, 1] }}
+        transition={{ duration: 1 }}
+        className="footer__content"
+      >
         <h3 className="footer__title">Support</h3>
         <ul className="footer__links">
           <li>
@@ -77,9 +89,13 @@ const Footer = () => (
             </a>
           </li>
         </ul>
-      </div>
+      </motion.div>
 
-      <div className="footer__content">
+      <motion.div
+        whileInView={{ opacity: [0, 1] }}
+        transition={{ duration: 1 }}
+        className="footer__content"
+      >
         <h3 className="footer__title">Information</h3>
         <ul className="footer__links">
           <li>
@@ -108,9 +124,13 @@ const Footer = () => (
             </a>
           </li>
         </ul>
-      </div>
+      </motion.div>
 
-      <div className="footer__content">
+      <motion.div
+        whileInView={{ opacity: [0, 1] }}
+        transition={{ duration: 1 }}
+        className="footer__content"
+      >
         <h3 className="footer__title">Connect with us</h3>
         <p className="icam">icam@gmail.com</p>
         <ul className="footer__social">
@@ -130,8 +150,8 @@ const Footer = () => (
             </a>
           </li>
         </ul>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
     <p className="footer__copyright">&copy; ICAM. All Right Reserved 2022</p>
   </footer>
 );

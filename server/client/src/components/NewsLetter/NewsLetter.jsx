@@ -1,8 +1,13 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const NewsLetter = () => (
-  <div className="newsletter">
-    <div className="news">
+  <motion.div className="newsletter">
+    <motion.div
+      whileInView={{ opacity: [0, 1] }}
+      transition={{ duration: 1 }}
+      className="news"
+    >
       <div className="news__content container-div">
         <h2>NewsLetter</h2>
         <p>
@@ -13,8 +18,8 @@ const NewsLetter = () => (
           <button className="button">Subscribe</button>
         </div>
       </div>
-    </div>
-  </div>
+    </motion.div>
+  </motion.div>
 );
 
 export default NewsLetter;

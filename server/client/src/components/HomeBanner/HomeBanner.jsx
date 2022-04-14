@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const HomeBanner = () => {
   return (
     <section className="section homeBanner container-div">
-      <div className="homeBanner__container grid">
-        <div className="homeBanner__container__left">
+      <motion.div className="homeBanner__container grid">
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 1 }}
+          className="homeBanner__container__left"
+        >
           <div className="homeBanner__container__left__overlay"></div>
           <div>
             <h3>Smart Protection</h3>
@@ -14,8 +19,12 @@ const HomeBanner = () => {
               <button className="button">Shop Now</button>
             </Link>
           </div>
-        </div>
-        <div className="homeBanner__container__left right">
+        </motion.div>
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 1 }}
+          className="homeBanner__container__left right"
+        >
           <div className="homeBanner__container__left__overlay"></div>
           <div>
             <h3>Full Protection</h3>
@@ -24,8 +33,8 @@ const HomeBanner = () => {
               <button className="button">Shop Now</button>
             </Link>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

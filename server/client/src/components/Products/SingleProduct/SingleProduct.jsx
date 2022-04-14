@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { addItemsToCart } from "../../../redux/actions/cartActions";
 import ProductRating from "../../ProductRating/ProductRating";
 import { useToasts } from "react-toast-notifications";
+import { motion } from "framer-motion";
 
 const SingleProduct = ({ product }) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -17,7 +18,11 @@ const SingleProduct = ({ product }) => {
     dispatch(addItemsToCart(product?._id, 1, addToast));
   };
   return (
-    <div className="products__container__item">
+    <motion.div
+      whileInView={{ opacity: [0, 1] }}
+      transition={{ duration: 1 }}
+      className="products__container__item"
+    >
       <Link to={`/product/${product._id}`}>
         <img src={product?.images?.url} alt="" />
       </Link>
@@ -44,7 +49,7 @@ const SingleProduct = ({ product }) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

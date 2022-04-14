@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ProtectedArea = () => (
-  <div className="protected-section">
-    <div className="protected">
+  <motion.div className="protected-section">
+    <motion.div
+      whileInView={{ opacity: [0, 1] }}
+      transition={{ duration: 1 }}
+      className="protected"
+    >
       <div className="protected__overlay"></div>
 
       <div className="protected__content container-div">
@@ -14,8 +19,8 @@ const ProtectedArea = () => (
           <button className="button">Shop Now</button>
         </Link>
       </div>
-    </div>
-  </div>
+    </motion.div>
+  </motion.div>
 );
 
 export default ProtectedArea;

@@ -3,7 +3,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiSend } from "react-icons/fi";
 import Footer from "../../components/Footer/Footer";
-
+import { motion } from "framer-motion";
 const Contact = () => {
   return (
     <section>
@@ -12,8 +12,12 @@ const Contact = () => {
           <h2>Contact Us</h2>
         </div>
 
-        <div className="container-div">
-          <div className="contacts__content grid">
+        <motion.div className="container-div">
+          <motion.div
+            whileInView={{ opacity: [0, 1] }}
+            transition={{ duration: 1 }}
+            className="contacts__content grid"
+          >
             <div className="contacts__content__box">
               <div className="contacts__content__box__img">
                 <IoCallOutline />
@@ -23,28 +27,40 @@ const Contact = () => {
               <p>002-00003333</p>
             </div>
 
-            <div className="contacts__content__box">
+            <motion.div
+              whileInView={{ opacity: [0, 1] }}
+              transition={{ duration: 1 }}
+              className="contacts__content__box"
+            >
               <div className="contacts__content__box__img">
                 <AiOutlineMail />
               </div>
               <h4>Email</h4>
               <p>icam@gamil.com</p>
               <p>support@gmail.com</p>
-            </div>
+            </motion.div>
 
-            <div className="contacts__content__box">
+            <motion.div
+              whileInView={{ opacity: [0, 1] }}
+              transition={{ duration: 1 }}
+              className="contacts__content__box"
+            >
               <div className="contacts__content__box__img">
                 <FiSend />
               </div>
               <h4>Address</h4>
               <p>No: 58 A, East Madison Street,</p>
               <p>Baltimore, MD, USA 4508</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="contacts__form">
+          <motion.div className="contacts__form">
             <h2>Contact Form</h2>
-            <div className="contacts__form__content">
+            <motion.div
+              whileInView={{ opacity: [0, 1] }}
+              transition={{ duration: 1 }}
+              className="contacts__form__content"
+            >
               <div className="contacts__form__content__inputs grid">
                 <div>
                   <input
@@ -71,7 +87,11 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              <div className="contacts__form__content__message">
+              <motion.div
+                whileInView={{ opacity: [0, 1] }}
+                transition={{ duration: 1 }}
+                className="contacts__form__content__message"
+              >
                 <textarea
                   name="message"
                   id="message"
@@ -79,13 +99,13 @@ const Contact = () => {
                   rows="10"
                   placeholder="Your message*"
                 ></textarea>
-              </div>
+              </motion.div>
               <div className="contacts__form__button">
                 <button className="button">Send</button>
               </div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
 
       <Footer />
