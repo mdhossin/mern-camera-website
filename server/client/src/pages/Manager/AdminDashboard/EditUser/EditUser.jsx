@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
@@ -9,18 +9,17 @@ const EditUser = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { addToast } = useToasts();
+
   const [editUser, setEditUser] = useState([]);
-
-  const { users } = useSelector((state) => state.userList);
-  const { userInfo } = useSelector((state) => state.userLogin);
-
   const [checkAdmin, setCheckAdmin] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [num, setNum] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  console.log(editUser, checkAdmin, num, "edituser");
+  const { users } = useSelector((state) => state.userList);
+  const { userInfo } = useSelector((state) => state.userLogin);
+
   useEffect(() => {
     if (users.length !== 0) {
       users.forEach((user) => {
@@ -39,7 +38,7 @@ const EditUser = () => {
       if (num % 2 !== 0) {
         setLoading(true);
         const res = await axios.patch(
-          `/api/admin/update_role/${editUser._id}`,
+          `https://mern-camera-shop.herokuapp.com/api/admin/update_role/${editUser._id}`,
           {
             role: checkAdmin ? 1 : 0,
           },

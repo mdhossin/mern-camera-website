@@ -10,7 +10,7 @@ import { useToasts } from "react-toast-notifications";
 import { logout } from "../../../../redux/actions/userActions";
 import { USER_LOGOUT_RESET } from "../../../../redux/constants/userConstants";
 
-export default function Sidebar() {
+const Sidebar = () => {
   const [currentLink, setCurrentLink] = useState(1);
   const [navbarState, setNavbarState] = useState(false);
   const width = navbarState ? "60%" : "0%";
@@ -195,4 +195,6 @@ export default function Sidebar() {
       </div>
     </>
   );
-}
+};
+
+export default Sidebar;

@@ -9,11 +9,12 @@ import {
 import { Loader } from "../../../../components";
 
 const AllProducts = () => {
+  const [callback, setCallback] = useState(false);
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.allProducts);
   const { products, loading, error } = productsData;
   const token = useSelector((state) => state.userLogin?.userInfo?.access_token);
-  const [callback, setCallback] = useState(false);
+
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch, callback]);
@@ -22,7 +23,7 @@ const AllProducts = () => {
     try {
       if (window.confirm("are you sure?")) {
         const destroyImg = axios.post(
-          "/api/destroy",
+          "https://mern-camera-shop.herokuapp.com/api/destroy",
           { public_id },
           {
             headers: { Authorization: token },

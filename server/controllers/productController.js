@@ -2,29 +2,6 @@ const Products = require("../models/productModel");
 const CustomErrorHandler = require("../services/CustomErrorHandler");
 
 const productController = {
-  // async getProducts(req, res, next) {
-  //   try {
-  //     const features = new APIfeatures(Products.find(), req.query)
-  //       .filtering()
-  //       .sorting()
-  //       .paginating();
-  //     const products = await features.query;
-
-  //     if (products.length < 0) {
-  //       return res.status(404).json({
-  //         message: "No product found.",
-  //       });
-  //     }
-
-  //     res.json({
-  //       status: "success",
-  //       result: products.length,
-  //       products: products,
-  //     });
-  //   } catch (err) {
-  //     return next(err);
-  //   }
-  // },
   async createProduct(req, res, next) {
     try {
       const { name, description, Stock, price, isActive, images, ratings } =
@@ -131,8 +108,6 @@ const productController = {
 
     res.status(200).json(products);
   },
-  // search api
-  // fetch  product name search api
 };
 
 module.exports = productController;

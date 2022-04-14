@@ -7,9 +7,7 @@
   &__header {
     height: 130px;
     background-color: rgb(243, 244, 246);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex(center, center);
     h2 {
       font-weight: 500;
       color: #333;
@@ -41,9 +39,7 @@
         height: 50px;
         color: #fff;
         background-color: var(--main-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex(center, center);
         transition: all 0.5s ease;
 
         svg {

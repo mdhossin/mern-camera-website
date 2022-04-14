@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineDelete, AiOutlineCheck } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { useToasts } from "react-toast-notifications";
 
 const UserListItem = ({ users, setCallback, callback }) => {
-  const auth = useSelector((state) => state.userLogin?.userInfo);
-  const token = useSelector((state) => state.userLogin?.userInfo?.access_token);
-  const { user } = auth;
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState("");
   const { addToast } = useToasts();
+
+  const auth = useSelector((state) => state.userLogin?.userInfo);
+  const token = useSelector((state) => state.userLogin?.userInfo?.access_token);
+  const { user } = auth;
 
   const handleDelete = async (id) => {
     try {
       if (user._id !== id) {
         if (window.confirm("Are you sure you want to delete this account?")) {
-          const { data } = await axios.delete(`/api/admin/delete/${id}`, {
-            headers: { Authorization: token },
-          });
+          const { data } = await axios.delete(
+            `https://mern-camera-shop.herokuapp.com/api/admin/delete/${id}`,
+            {
+              headers: { Authorization: token },
+            }
+          );
 
           setCallback(!callback);
           setSuccess(data.message);
@@ -53,7 +57,6 @@ const UserListItem = ({ users, setCallback, callback }) => {
             <tr>
               <th scope="col">User Id</th>
               <th scope="col">Name</th>
-
               <th scope="col">Email</th>
               <th scope="col">Admin</th>
               <th scope="col">Action</th>

@@ -13,7 +13,6 @@ const uploadController = {
     console.log(process.env.CLOUD_API_KEY);
     try {
       const file = req.files.file;
-      // console.log("file", file);
 
       cloudinary.v2.uploader.upload(
         file.tempFilePath,

@@ -9,7 +9,6 @@
 
     @include breakpoints-down("small") {
       flex-direction: column;
-
       gap: 0;
     }
 

@@ -2,7 +2,6 @@ import Banner from "./Banner/Banner";
 import Header from "./Header/Header";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import CartSummary from "./CartSummary/CartSummary";
-
 import CompanyArea from "./CompanyArea/CompanyArea";
 import DiscountArea from "./DiscountArea/DiscountArea";
 import Footer from "./Footer/Footer";

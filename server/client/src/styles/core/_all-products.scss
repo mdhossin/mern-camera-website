@@ -29,9 +29,7 @@
       }
 
       &-price {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include flex(center, space-between);
       }
       img {
         max-width: 100%;
@@ -75,9 +73,7 @@
   &__buttons {
     margin-top: 0;
     padding-top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex(center, space-between);
 
     .button {
       flex: 1;
@@ -85,10 +81,8 @@
       line-height: 45px;
       font-size: 15px;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       color: #fff;
+      @include flex(center, center);
     }
 
     .delete {

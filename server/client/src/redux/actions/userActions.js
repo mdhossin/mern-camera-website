@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/login",
+      "https://mern-camera-shop.herokuapp.com/api/login",
       { email, password },
       config
     );
@@ -52,7 +52,6 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // user registration action
-
 export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -66,7 +65,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/register",
+      "https://mern-camera-shop.herokuapp.com/api/register",
       { name, email, password },
       config
     );
@@ -87,7 +86,6 @@ export const register = (name, email, password) => async (dispatch) => {
 };
 
 // refresh token action
-
 export const refreshToken = () => async (dispatch) => {
   const logged = localStorage.getItem("logged");
   if (logged !== "camera-shop") return;
@@ -103,8 +101,10 @@ export const refreshToken = () => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/refresh_token", config);
-    // console.log(data, "refresh token action");
+    const { data } = await axios.get(
+      "https://mern-camera-shop.herokuapp.com/api/refresh_token",
+      config
+    );
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -125,7 +125,6 @@ export const refreshToken = () => async (dispatch) => {
 // user logout action
 export const logout = (token) => async (dispatch) => {
   const result = await checkTokenExp(token, dispatch);
-  // console.log("logout action ", result, token);
   const access_token = result ? result : token;
 
   try {
@@ -141,8 +140,10 @@ export const logout = (token) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/logout", config);
-    // console.log(data, access_token, "logout action");
+    const { data } = await axios.get(
+      "https://mern-camera-shop.herokuapp.com/api/logout",
+      config
+    );
 
     dispatch({
       type: USER_LOGOUT_SUCCESS,
@@ -163,7 +164,6 @@ export const logout = (token) => async (dispatch) => {
 // user google login
 
 export const googleLogin = (id_token) => async (dispatch) => {
-  console.log(id_token);
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -176,10 +176,10 @@ export const googleLogin = (id_token) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post("/api/google_login", config);
-    console.log(data, " data");
-
-    // const res = await postAPI('google_login', { id_token })
+    const { data } = await axios.post(
+      "https://mern-camera-shop.herokuapp.com/api/google_login",
+      config
+    );
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -199,7 +199,6 @@ export const googleLogin = (id_token) => async (dispatch) => {
 };
 
 // user list for admin
-
 export const userList = () => async (dispatch, getState) => {
   const token = getState().userLogin?.userInfo?.access_token;
   try {
@@ -214,7 +213,10 @@ export const userList = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/admin/users`, config);
+    const { data } = await axios.get(
+      `https://mern-camera-shop.herokuapp.com/api/admin/users`,
+      config
+    );
     dispatch({
       type: USER_LIST_SUCCESS,
       payload: data,

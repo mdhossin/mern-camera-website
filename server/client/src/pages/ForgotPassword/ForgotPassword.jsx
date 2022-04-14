@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { Spinner } from "react-bootstrap";
@@ -12,10 +12,9 @@ const ForgotPassword = () => {
     success: "",
   });
 
+  const { addToast } = useToasts();
   const { email, error, success } = data;
   const [loading, setLoading] = useState(false);
-
-  const { addToast } = useToasts();
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -28,7 +27,10 @@ const ForgotPassword = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("/api/user/forgot_password", { email });
+      const res = await axios.post(
+        "https://mern-camera-shop.herokuapp.com/api/user/forgot_password",
+        { email }
+      );
       setLoading(false);
       setData({ ...data, error: "", success: res.data.message });
     } catch (error) {

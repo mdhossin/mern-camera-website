@@ -30,8 +30,11 @@ export const createProduct =
         },
       };
 
-      const { data } = await axios.post("/api/products", product, config);
-      console.log(data, "create action");
+      const { data } = await axios.post(
+        "https://mern-camera-shop.herokuapp.com/api/products",
+        product,
+        config
+      );
 
       dispatch({
         type: CREATE_PRODUCT_SUCCESS,
@@ -67,8 +70,11 @@ export const updateProduct =
         },
       };
 
-      const { data } = await axios.put(`/api/products/${id}`, product, config);
-      // console.log(data, access_token, "logout action");
+      const { data } = await axios.put(
+        `https://mern-camera-shop.herokuapp.com/api/products/${id}`,
+        product,
+        config
+      );
 
       dispatch({
         type: CREATE_PRODUCT_SUCCESS,
@@ -107,7 +113,10 @@ export const deleteProduct = (token, id) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.delete(`/api/products/${id}`, config);
+    const { data } = await axios.delete(
+      `https://mern-camera-shop.herokuapp.com/api/products/${id}`,
+      config
+    );
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
       payload: data,
@@ -120,7 +129,6 @@ export const deleteProduct = (token, id) => async (dispatch) => {
           ? error.response.data.message
           : error.message,
     });
-    // console.log(error);
   }
 };
 
@@ -131,8 +139,9 @@ export const getProductById = (id) => async (dispatch) => {
       type: PRODUCT_BY_ID_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/products/${id}`);
-    // console.log("from action file:", data);
+    const { data } = await axios.get(
+      `https://mern-camera-shop.herokuapp.com/api/products/${id}`
+    );
     dispatch({
       type: PRODUCT_BY_ID_SUCCESS,
       payload: data,
@@ -154,7 +163,9 @@ export const getAllProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTS_LOADING });
 
-    const { data } = await axios.get("/api/products");
+    const { data } = await axios.get(
+      "https://mern-camera-shop.herokuapp.com/api/products"
+    );
 
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,

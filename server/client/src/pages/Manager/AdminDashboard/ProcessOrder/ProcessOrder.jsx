@@ -1,9 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
 import { useSelector, useDispatch } from "react-redux";
 import { MdOutlineAccountTree } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
-
 import { Spinner } from "react-bootstrap";
 import {
   clearErrors,
@@ -24,11 +23,8 @@ const ProcessOrder = () => {
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
-
     const myForm = new FormData();
-
     myForm.set("status", status);
-
     dispatch(updateOrder(id, myForm));
   };
 
@@ -67,7 +63,6 @@ const ProcessOrder = () => {
         <h2>{error}</h2>
       ) : (
         <>
-          {/* <MetaData title="Order Details" /> */}
           <div className="orderDetails grid container-div">
             <div className="orderDetails__container grid">
               <div className="orderDetails__container__box">

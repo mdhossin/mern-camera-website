@@ -17,19 +17,17 @@ const Register = () => {
     name: "",
     cf_password: "",
   });
-
-  const { name, email, password, cf_password } = newUser;
-
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
+
+  const userReg = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo: userRegInfo } = userReg;
+
+  const { name, email, password, cf_password } = newUser;
 
   const handleChangeInput = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
-
-  const userReg = useSelector((state) => state.userRegister);
-
-  const { loading, error, userInfo: userRegInfo } = userReg;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,9 +39,7 @@ const Register = () => {
         autoDismiss: true,
       });
     }
-
     dispatch(register(name, email, password));
-
     setNewUser({
       email: "",
       password: "",

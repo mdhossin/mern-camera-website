@@ -1,4 +1,3 @@
-import React, { Fragment } from "react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 const ProductRating = ({ ratingValue }) => {
   let rating = [];
@@ -19,7 +18,7 @@ const ProductRating = ({ ratingValue }) => {
       );
     }
   }
-  return <Fragment>{rating}</Fragment>;
+  return <>{rating}</>;
 };
 
 export default ProductRating;

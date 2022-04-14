@@ -5,10 +5,9 @@ import { useToasts } from "react-toast-notifications";
 import { BsHandbag } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
-import MobileMenu from "../MobileMenu/MobileMenu";
 import Cart from "../../pages/Cart/Cart";
 import { useSelector, useDispatch } from "react-redux";
-
+import MobileMenu from "../MobileMenu/MobileMenu";
 import { USER_LOGOUT_RESET } from "../../redux/constants/userConstants";
 import { logout } from "../../redux/actions/userActions";
 import { logo } from "../../assets";

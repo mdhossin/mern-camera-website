@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FiShoppingCart } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-
 import { useToasts } from "react-toast-notifications";
 import { getProductById } from "../../redux/actions/productActions";
 import { addItemsToCart } from "../../redux/actions/cartActions";
 import { Footer, Loader, ProductRating } from "../../components";
-import { FiShoppingCart } from "react-icons/fi";
 
 const ProductDetail = () => {
   const { productId } = useParams();

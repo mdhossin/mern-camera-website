@@ -1,17 +1,14 @@
-import React from "react";
+import { motion } from "framer-motion";
+import { useToasts } from "react-toast-notifications";
 import { FiShoppingCart } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCart } from "../../../redux/actions/cartActions";
 import ProductRating from "../../ProductRating/ProductRating";
-import { useToasts } from "react-toast-notifications";
-import { motion } from "framer-motion";
 
 const SingleProduct = ({ product }) => {
   const { cartItems } = useSelector((state) => state.cart);
-
   const { addToast } = useToasts();
-
   const addOrNot = cartItems?.find((item) => item.product === product._id);
   const dispatch = useDispatch();
   const addToCartHandler = () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Banner,
   CompanyArea,
@@ -10,19 +9,17 @@ import {
   ProtectedArea,
 } from "../../components";
 
-const Home = () => {
-  return (
-    <div style={{ marginTop: "5rem" }}>
-      <Banner />
-      <HomeBanner />
-      <ProtectedArea />
-      <Products />
-      <DiscountArea />
-      <NewsLetter />
-      <CompanyArea />
-      <Footer />
-    </div>
-  );
-};
+const Home = () => (
+  <div style={{ marginTop: "5rem" }}>
+    <Banner />
+    <HomeBanner />
+    <ProtectedArea />
+    <Products />
+    <DiscountArea />
+    <NewsLetter />
+    <CompanyArea />
+    <Footer />
+  </div>
+);
 
 export default Home;

@@ -1,11 +1,8 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useToasts } from "react-toast-notifications";
 import { useSelector, useDispatch } from "react-redux";
-
 import { Link } from "react-router-dom";
-
 import { BiEdit } from "react-icons/bi";
-
 import { Table } from "react-bootstrap";
 import { clearErrors, myOrders } from "../../../../redux/actions/orderActions";
 import Loader from "../../../../components/Loader/Loader";

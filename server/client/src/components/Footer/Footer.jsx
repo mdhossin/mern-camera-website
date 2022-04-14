@@ -1,9 +1,7 @@
-import React from "react";
-
-import { BsFacebook, BsPinterest } from "react-icons/bs";
-import { AiFillInstagram } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { BsFacebook, BsPinterest } from "react-icons/bs";
+import { AiFillInstagram } from "react-icons/ai";
 import { logo } from "../../assets";
 
 const Footer = () => (

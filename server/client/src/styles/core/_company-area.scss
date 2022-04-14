@@ -20,9 +20,7 @@
     > div {
       border: 1px solid #e4e4e4;
       border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex(center, center);
     }
   }
 }

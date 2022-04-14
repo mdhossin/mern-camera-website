@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { useToasts } from "react-toast-notifications";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Spinner } from "react-bootstrap";
 import axios from "axios";
 import { checkPassword, isLength } from "../../utils/validation";
+
 const ResetPassword = () => {
   const [data, setData] = useState({
     password: "",
@@ -13,12 +13,12 @@ const ResetPassword = () => {
     error: "",
     success: "",
   });
-  const { token } = useParams();
-  const { addToast } = useToasts();
-
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const { token } = useParams();
+  const { addToast } = useToasts();
 
   const { password, cf_password, error, success } = data;
 
@@ -45,7 +45,7 @@ const ResetPassword = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "/api/user/reset",
+        "https://mern-camera-shop.herokuapp.com/api/user/reset",
         { password },
         {
           headers: { Authorization: token },

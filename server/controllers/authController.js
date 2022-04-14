@@ -1,5 +1,4 @@
 const Users = require("../models/userModels");
-// import fetch from 'node-fetch'
 const { OAuth2Client } = require("google-auth-library");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
@@ -13,8 +12,8 @@ const jwt = require("jsonwebtoken");
 const sendEmail = require("../config/sendMail");
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
-const CLIENT_URL = `http://localhost:3000`;
-// const CLIENT_URL = `https://mern-camera-shop.herokuapp.com`;
+// const CLIENT_URL = `http://localhost:3000`;
+const CLIENT_URL = `https://mern-camera-shop.herokuapp.com`;
 
 const authCtrl = {
   async register(req, res, next) {
@@ -30,7 +29,6 @@ const authCtrl = {
     });
 
     const { error } = registerSchema.validate(req.body);
-    console.log(req.body, "body from");
     if (error) {
       return next(error);
     }
@@ -70,7 +68,6 @@ const authCtrl = {
       const active_token = generateActiveToken({ newUser });
 
       const url = `${CLIENT_URL}/active/${active_token}`;
-      // console.log(url, "url");
 
       if (validateEmail(email)) {
         sendEmail(email, url, "Verify your email address");
@@ -83,15 +80,12 @@ const authCtrl = {
     }
   },
   async activeAccount(req, res, next) {
-    // console.log(req.body, "active backend");
     try {
       const { activation_token } = req.body;
-
       const decoded = jwt.verify(
         activation_token,
         `${process.env.ACTIVE_TOKEN_SECRET}`
       );
-      console.log(decoded, "decoded");
       const { newUser } = decoded;
 
       if (!newUser)
@@ -178,7 +172,6 @@ const authCtrl = {
           rf_token: refresh_token,
         }
       );
-      // console.log(access_token, user, "reresh token router");
 
       res.json({ access_token, user });
     } catch (err) {
@@ -186,7 +179,6 @@ const authCtrl = {
     }
   },
   async googleLogin(req, res, next) {
-    console.log(req.body.headers.Authorization, "google login");
     try {
       const { Authorization } = req.body.headers;
       const verify = await client.verifyIdToken({
@@ -234,7 +226,6 @@ const authCtrl = {
 
   // user routes start here
   async updateUser(req, res, next) {
-    console.log(req.body, "update user route");
     try {
       const { name, avatar } = req.body;
       await Users.findOneAndUpdate(
@@ -304,7 +295,6 @@ const authCtrl = {
       }
 
       const passwordHash = await bcrypt.hash(password, 12);
-      // console.log(passwordHash);
       await Users.findOneAndUpdate(
         {
           _id: req.user.id,
@@ -389,7 +379,6 @@ const loginUser = async (user, password, res) => {
 
   const access_token = generateAccessToken({ id: user._id });
   const refresh_token = generateRefreshToken({ id: user._id }, res);
-  // console.log("login refresh", refresh_token);
 
   await Users.findOneAndUpdate(
     { _id: user._id },

@@ -8,14 +8,12 @@ exports.generateActiveToken = (payload) => {
 };
 
 exports.generateAccessToken = (payload) => {
-  console.log("access", process.env.ACCESS_TOKEN_SECRET);
   return jwt.sign(payload, `${process.env.ACCESS_TOKEN_SECRET}`, {
     expiresIn: "15m",
   });
 };
 
 exports.generateRefreshToken = (payload, res) => {
-  console.log(process.env.REFRESH_TOKEN_SECRET, "refresh");
   const refresh_token = jwt.sign(
     payload,
     `${process.env.REFRESH_TOKEN_SECRET}`,

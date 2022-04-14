@@ -1,7 +1,6 @@
 @use "./utils/" as *;
 
 .checkoutPayment {
-  //   padding-top: 7rem;
   display: grid;
   place-items: center;
   height: 100vh;
@@ -24,7 +23,6 @@
     }
     > div {
       display: flex;
-
       justify-content: space-between;
       font-family: "Roboto", sans-serif;
 

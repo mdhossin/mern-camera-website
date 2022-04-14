@@ -16,7 +16,7 @@ import {
   USER_REGISTER_SUCCESS,
 } from "../constants/userConstants";
 
-// user login action reuse action bot login and register
+// user login action
 export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:

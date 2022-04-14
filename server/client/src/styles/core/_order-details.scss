@@ -2,11 +2,10 @@
 
 .orderDetails {
   padding: 3rem 0;
+  font-family: "Roboto", sans-serif;
   @media screen and (min-width: 1080px) {
     padding: 7rem 0;
   }
-
-  font-family: "Roboto", sans-serif;
 
   @include breakpoint-up("large") {
     grid-template-columns: 1fr 1fr;
@@ -35,7 +34,6 @@
 
       > div {
         display: flex;
-
         justify-content: space-between;
       }
 
@@ -51,9 +49,7 @@
     }
     &__container {
       > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include flex(center, space-between);
 
         img {
           width: 60px;

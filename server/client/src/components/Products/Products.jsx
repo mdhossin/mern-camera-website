@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProduct } from "../../redux/actions/productActions";
-
 import Loader from "../Loader/Loader";
 import SingleProduct from "./SingleProduct/SingleProduct";
 

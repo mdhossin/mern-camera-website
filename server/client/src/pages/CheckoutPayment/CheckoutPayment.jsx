@@ -1,13 +1,10 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { createOrder } from "../../redux/actions/orderActions";
 
 const CheckoutPayment = () => {
-  const { cartItems } = useSelector((state) => state.cart);
-
   const dispatch = useDispatch();
-
+  const { cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.userLogin?.userInfo);
 
   const subtotal = cartItems.reduce(
@@ -16,15 +13,11 @@ const CheckoutPayment = () => {
   );
 
   const shippingCharges = subtotal < 1000 ? 0 : 100;
-
   const tax = subtotal * 0.18;
-
   const totalPrice = Math.round(subtotal + tax + shippingCharges);
 
   const order = {
-    // shippingInfo,
     orderItems: cartItems,
-
     shippingPrice: shippingCharges,
     totalPrice: totalPrice,
   };

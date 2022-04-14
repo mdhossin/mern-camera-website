@@ -1,7 +1,6 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useToasts } from "react-toast-notifications";
 import { useSelector, useDispatch } from "react-redux";
-
 import { Link, useParams } from "react-router-dom";
 import {
   clearErrors,
@@ -11,8 +10,6 @@ import Loader from "../../../../components/Loader/Loader";
 
 const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
-  console.log(order);
-
   const dispatch = useDispatch();
   const { orderId } = useParams();
   const { addToast } = useToasts();
@@ -25,14 +22,13 @@ const OrderDetails = () => {
     dispatch(getOrderDetails(orderId));
   }, [dispatch, error, addToast, orderId]);
   return (
-    <Fragment>
+    <>
       {loading ? (
         <Loader backdrop />
       ) : error ? (
         <h2>{error}</h2>
       ) : (
-        <Fragment>
-          {/* <MetaData title="Order Details" /> */}
+        <>
           <div className="orderDetails grid container-div">
             <div className="orderDetails__container grid">
               <h2>
@@ -112,9 +108,9 @@ const OrderDetails = () => {
               </div>
             </div>
           </div>
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 

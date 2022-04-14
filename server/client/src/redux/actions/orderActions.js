@@ -33,7 +33,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
         Authorization: token,
       },
     };
-    const { data } = await axios.post("/api/order/new", order, config);
+    const { data } = await axios.post(
+      "https://mern-camera-shop.herokuapp.com/api/order/new",
+      order,
+      config
+    );
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
 
@@ -61,7 +65,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
 export const myOrders = () => async (dispatch, getState) => {
   try {
     const token = getState().userLogin?.userInfo?.access_token;
-    console.log(token, "my orders action");
     dispatch({ type: MY_ORDERS_REQUEST });
     const config = {
       headers: {
@@ -70,8 +73,10 @@ export const myOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/orders/me", config);
-    console.log(data, "orders action");
+    const { data } = await axios.get(
+      "https://mern-camera-shop.herokuapp.com/api/orders/me",
+      config
+    );
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data });
   } catch (error) {
@@ -99,7 +104,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/${id}`, config);
+    const { data } = await axios.get(
+      `https://mern-camera-shop.herokuapp.com/api/orders/${id}`,
+      config
+    );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
@@ -125,7 +133,10 @@ export const getAllOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/admin/orders", config);
+    const { data } = await axios.get(
+      "https://mern-camera-shop.herokuapp.com/api/admin/orders",
+      config
+    );
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -151,7 +162,11 @@ export const updateOrder = (id, order) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/admin/order/${id}`, order, config);
+    const { data } = await axios.put(
+      `https://mern-camera-shop.herokuapp.com/api/admin/order/${id}`,
+      order,
+      config
+    );
 
     dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
   } catch (error) {
@@ -178,7 +193,10 @@ export const deleteOrder = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`/api/admin/order/${id}`, config);
+    const { data } = await axios.delete(
+      `https://mern-camera-shop.herokuapp.com/api/admin/order/${id}`,
+      config
+    );
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
   } catch (error) {

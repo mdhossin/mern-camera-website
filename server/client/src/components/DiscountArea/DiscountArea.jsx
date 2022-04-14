@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -10,7 +9,6 @@ const DiscountArea = () => (
       className="discount"
     >
       <div className="discount__overlay"></div>
-
       <div className="discount__content container-div">
         <p>WE'RE AT 71% OF OUR GOAL!</p>
         <h2>Discount For All Orders Over $100</h2>

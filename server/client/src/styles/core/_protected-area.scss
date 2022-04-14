@@ -10,12 +10,7 @@
   background-size: cover;
   background-position: center center;
   position: relative;
-
-  //   @include flex(center, flex-start);
-  display: flex;
-  //   align-items: flex-start;
-  justify-content: flex-start;
-  align-items: center;
+  @include flex(center, flex-start);
 
   &__overlay {
     position: absolute;

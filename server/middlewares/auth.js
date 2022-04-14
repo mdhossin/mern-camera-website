@@ -3,10 +3,8 @@ const jwt = require("jsonwebtoken");
 const CustomErrorHandler = require("../services/CustomErrorHandler");
 
 const auth = async (req, res, next) => {
-  console.log(process.env.ACCESS_TOKEN_SECRET, "auth");
   try {
     const token = req.header("Authorization");
-    console.log(token, "token");
 
     if (!token) {
       return next(CustomErrorHandler.unAuthorized());

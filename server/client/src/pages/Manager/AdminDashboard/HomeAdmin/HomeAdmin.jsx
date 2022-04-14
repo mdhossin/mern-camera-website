@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../../../redux/actions/productActions";
 import { getAllOrders } from "../../../../redux/actions/orderActions";
 import { userList } from "../../../../redux/actions/userActions";
-import axios from "axios";
 import Chart from "../../../../components/Chart/Chart";
 const HomeAdmin = () => {
   const dispatch = useDispatch();
+  const [userStats, setUserStats] = useState([]);
 
   const productData = useSelector((state) => state.allProducts);
   const { products } = productData;
@@ -27,9 +28,6 @@ const HomeAdmin = () => {
     orders.forEach((item) => {
       totalAmount += item.totalPrice;
     });
-
-  const [userStats, setUserStats] = useState([]);
-  console.log(userStats);
 
   const MONTHS = useMemo(
     () => [
@@ -58,7 +56,10 @@ const HomeAdmin = () => {
             Authorization: access_token,
           },
         };
-        const res = await axios.get("/api/admin/stats", config);
+        const res = await axios.get(
+          "https://mern-camera-shop.herokuapp.com/api/admin/stats",
+          config
+        );
         res.data.map((item) =>
           setUserStats((prev) => [
             ...prev,
@@ -66,7 +67,7 @@ const HomeAdmin = () => {
           ])
         );
       } catch (error) {
-        console.log(error.messge);
+        console.log(error?.messge);
       }
     };
     getStats();

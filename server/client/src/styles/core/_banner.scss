@@ -61,7 +61,6 @@
     right: 0;
     bottom: 1.25rem;
     left: 0;
-
     top: 17%;
 
     @include breakpoint-up("small") {
@@ -85,12 +84,6 @@
   }
 }
 
-// .carousel-control-prev,
-// .carousel-control-next {
-//   @media screen and (max-width: 968px) {
-//     top: -15% !important;
-//   }
-// }
 .carousel-item {
   img {
     @media screen and (max-width: 575px) {

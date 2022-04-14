@@ -1,5 +1,5 @@
 @use "./utils/" as *;
-// mini cart
+
 // mini cart
 .mini-cart {
   visibility: hidden;
@@ -10,8 +10,6 @@
   height: 100%;
   width: 470px;
   z-index: 1000;
-  // -webkit-box-shadow: $box-shadow;
-  // box-shadow: $box-shadow;
   transition: all 0.5s ease;
 
   @include breakpoints-down("small") {
@@ -45,9 +43,7 @@
   &__empty {
     height: 100%;
     @include flex(center, center);
-
     flex-direction: column;
-
     svg {
       width: 50px;
       height: 50px;

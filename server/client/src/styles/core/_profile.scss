@@ -21,7 +21,6 @@
       margin-bottom: 1rem;
     }
     &__img {
-      //   @include flex(center, center);
       width: 150px;
       height: 150px;
       overflow: hidden;
@@ -54,7 +53,6 @@
         text-align: center;
         font-weight: 400;
         text-transform: uppercase;
-
         transition: 0.3s ease-in-out;
         background-color: rgba($color: #f1510a, $alpha: 0.5);
 
@@ -192,11 +190,8 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 1;
-
       padding: 15px 52px;
-
       text-transform: uppercase;
-
       color: #fff;
       border: none;
       background-color: #404040;

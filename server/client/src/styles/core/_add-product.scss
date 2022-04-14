@@ -29,10 +29,8 @@
 
     textarea {
       font-size: 15px;
-
       width: 100%;
       padding: 10px;
-
       resize: vertical;
       color: #2c2c2c;
       border: 1px solid #e4e4e4 !important;
@@ -52,7 +50,6 @@
         margin-top: 20px;
         place-items: center;
         border: 1px dashed #799cd9;
-        /* padding: 36px 48px; */
         position: relative;
         height: 300px;
         width: 300px;
@@ -72,13 +69,9 @@
               top: 0;
               left: 0;
               background: white;
-
               text-align: center;
               cursor: pointer;
-
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              @include flex(center, center);
             }
           }
 
@@ -93,7 +86,6 @@
               margin-top: 0.5rem;
               width: 280px;
               height: 280px;
-
               object-fit: contain;
             }
 

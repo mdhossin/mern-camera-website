@@ -5,7 +5,6 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const orderController = {
   async newOrder(req, res, next) {
-    console.log(req.body);
     try {
       const { shippingInfo, orderItems, email, totalPrice, id, paymentInfo } =
         req.body;
@@ -67,7 +66,6 @@ const orderController = {
   },
   // get user all order
   async myOrders(req, res, next) {
-    console.log(req.user._id);
     let orders;
     try {
       orders = await Order.find({ user: req.user._id })
@@ -81,7 +79,6 @@ const orderController = {
   },
   // get admin all orders
   async getAllOrders(req, res, next) {
-    console.log(req.user._id);
     try {
       const orders = await Order.find();
 
@@ -104,7 +101,6 @@ const orderController = {
   async updateOrder(req, res, next) {
     try {
       const order = await Order.findById(req.params.id);
-      console.log(order, "update order");
 
       if (!order) {
         return next(
@@ -154,9 +150,7 @@ const orderController = {
 
 async function updateStock(id, quantity) {
   const product = await Product.findById(id);
-
   product.Stock -= quantity;
-
   await product.save({ validateBeforeSave: false });
 }
 

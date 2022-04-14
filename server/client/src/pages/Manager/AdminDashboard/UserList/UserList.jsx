@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { useNavigate } from "react-router-dom";
 import Loading from "../../../../components/Loading/Loading";
 import { userList } from "../../../../redux/actions/userActions";
@@ -9,11 +8,10 @@ import UserListItem from "./UserListItem/UserListItem";
 const UserList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [callback, setCallback] = useState(false);
 
   const { loading, error, users } = useSelector((state) => state.userList);
   const { userInfo } = useSelector((state) => state.userLogin);
-
-  const [callback, setCallback] = useState(false);
 
   useEffect(() => {
     if (userInfo && userInfo?.user.role === 1) {
@@ -21,16 +19,6 @@ const UserList = () => {
     } else {
       navigate("/");
     }
-
-    // if (deleteError) {
-    //   addToast(deleteError, { appearance: "error", autoDismiss: true });
-    // }
-    // if (deleteStatus) {
-    //   addToast(deleteStatus.message, {
-    //     appearance: "success",
-    //     autoDismiss: true,
-    //   });
-    // }
   }, [dispatch, navigate, userInfo, callback]);
   return (
     <>

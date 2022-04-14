@@ -25,14 +25,12 @@
   &__menu {
     @include breakpoints-down("medium") {
       position: fixed;
-
       top: 0;
       right: -100%;
       width: 100%;
       height: 100vh;
       padding: 6rem 2rem 3.5rem;
       transition: var(--transition);
-
       background-color: var(--color-grey);
       background-size: cover;
       background-repeat: repeat;
@@ -92,14 +90,11 @@
   &__link {
     padding: 0.4rem;
     display: flex;
-
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.5px;
-
     text-align: left;
     text-transform: capitalize;
-
     color: #333;
   }
 
@@ -134,7 +129,6 @@
       height: 38px;
       border-radius: 50%;
       position: relative;
-
       @include flex(center, center);
       background-color: var(--color-white);
 

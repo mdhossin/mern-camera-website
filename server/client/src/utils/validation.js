@@ -2,7 +2,6 @@ export const validRegister = (user) => {
   const { name, email, password, cf_password } = user;
 
   const errors = [];
-  //   console.log(user, "validate", errors);
 
   if (!name.trim()) {
     errors.push("Please add your name.");

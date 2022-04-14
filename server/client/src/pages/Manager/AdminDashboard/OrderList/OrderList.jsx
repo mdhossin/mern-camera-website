@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
-
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
 import { useToasts } from "react-toast-notifications";
 import { Loader } from "../../../../components";
 import {
@@ -45,7 +43,6 @@ const OrderList = () => {
         appearance: "success",
         autoDismiss: true,
       });
-      //   history.push("/admin/orders");
       dispatch({ type: DELETE_ORDER_RESET });
     }
 
@@ -54,8 +51,6 @@ const OrderList = () => {
 
   return (
     <>
-      {/* <MetaData title={`ALL ORDERS - Admin`} /> */}
-
       <section className="myorders container-div">
         <h2>All Orders</h2>
         <div>

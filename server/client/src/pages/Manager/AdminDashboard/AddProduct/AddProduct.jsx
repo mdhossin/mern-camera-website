@@ -1,8 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useToasts } from "react-toast-notifications";
 import { useSelector, useDispatch } from "react-redux";
-import Loading from "../../../../components/Loading/Loading";
 import { useNavigate, useParams } from "react-router-dom";
 import { CREATE_PRODUCT_RESET } from "../../../../redux/constants/productConstants";
 import {
@@ -20,10 +19,15 @@ const initialstate = {
 const AddProduct = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [product, setProduct] = useState(initialstate);
-
-  const dispatch = useDispatch();
+  const [images, setImages] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+  const [uploadSuccess, setUploadSuccess] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [onEdit, setOnEdit] = useState(false);
+  const { addToast } = useToasts();
 
   const token = useSelector((state) => state.userLogin?.userInfo?.access_token);
   const { products, error, loading } = useSelector(
@@ -31,17 +35,7 @@ const AddProduct = () => {
   );
   const productData = useSelector((state) => state.allProducts);
 
-  const [onEdit, setOnEdit] = useState(false);
-
   const { name, description, Stock, price } = product;
-
-  const [images, setImages] = useState(false);
-  const [uploadError, setUploadError] = useState("");
-  const [uploadSuccess, setUploadSuccess] = useState("");
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { addToast } = useToasts();
 
   useEffect(() => {
     if (productId) {
@@ -69,12 +63,16 @@ const AddProduct = () => {
       formData.append("file", file);
       setIsLoading(true);
       setUploadError("");
-      const res = await axios.post("/api/upload_image", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://mern-camera-shop.herokuapp.com/api/upload_image",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       setIsLoading(false);
       setImages(res.data);
       setUploadSuccess(res.data.message);
@@ -95,7 +93,7 @@ const AddProduct = () => {
       setIsLoading(true);
       setUploadError("");
       const res = await axios.post(
-        "/api/destroy",
+        "https://mern-camera-shop.herokuapp.com/api/destroy",
         { public_id: images.public_id },
         {
           headers: { Authorization: token },
@@ -120,11 +118,6 @@ const AddProduct = () => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
   };
-
-  // const clear = () => {
-  //   setImages();
-  //   setProduct({ name: "", description: "", quantity: "", price: "" });
-  // };
 
   const { _id } = product;
   // submit the product
@@ -157,11 +150,8 @@ const AddProduct = () => {
         appearance: "success",
         autoDismiss: true,
       });
-      // navigate(redirect);
     }
   }, [addToast, uploadSuccess, uploadError]);
-
-  // clear();
 
   const styleUpload = {
     display: images ? "block" : "none",

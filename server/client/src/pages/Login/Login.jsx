@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { googleLogin, login } from "../../redux/actions/userActions";
 import { useToasts } from "react-toast-notifications";
@@ -37,7 +37,7 @@ const Login = () => {
     try {
       dispatch(googleLogin(response.tokenId));
     } catch (error) {
-      console.log(error);
+      alert(error?.message);
     }
   };
 

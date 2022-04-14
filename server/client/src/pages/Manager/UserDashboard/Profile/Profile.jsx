@@ -5,16 +5,10 @@ import { useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { isLength, isMatch } from "../../../../utils/validation";
-
 import UserList from "../../AdminDashboard/UserList/UserList";
 import { Loader } from "../../../../components";
 
 const Profile = () => {
-  const { addToast } = useToasts();
-  const auth = useSelector((state) => state.userLogin?.userInfo);
-  const token = useSelector((state) => state.userLogin.userInfo?.access_token);
-  const { user } = auth;
-
   const [data, setData] = useState({
     name: "",
     password: "",
@@ -22,13 +16,18 @@ const Profile = () => {
     error: "",
     success: "",
   });
-  const { name, password, cf_password, error, success } = data;
 
   const [avatar, setAvatar] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
+
+  const { addToast } = useToasts();
+  const auth = useSelector((state) => state.userLogin?.userInfo);
+  const token = useSelector((state) => state.userLogin.userInfo?.access_token);
+  const { user } = auth;
+
+  const { name, password, cf_password, error, success } = data;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,12 +61,16 @@ const Profile = () => {
       formData.append("file", file);
 
       setLoading(true);
-      const res = await axios.post("/api/upload_image", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: token,
-        },
-      });
+      const res = await axios.post(
+        "https://mern-camera-shop.herokuapp.com/api/upload_image",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
       setLoading(false);
       setAvatar(res.data.url);
       setData({ ...data, success: res.data.message, error: "" });
@@ -86,7 +89,7 @@ const Profile = () => {
   const updateInfor = () => {
     try {
       axios.patch(
-        "/api/user/update",
+        "https://mern-camera-shop.herokuapp.com/api/user/update",
         {
           name: name ? name : user.name,
           avatar: avatar ? avatar : user.avatar,
@@ -126,7 +129,7 @@ const Profile = () => {
 
     try {
       axios.post(
-        "/api/user/reset",
+        "https://mern-camera-shop.herokuapp.com/api/user/reset",
         { password },
         {
           headers: { Authorization: token },
