@@ -1,0 +1,39 @@
+@use "./utils/" as *;
+
+.checkoutPayment {
+  //   padding-top: 7rem;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+
+  &__content {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.07);
+    padding: 3rem 2rem;
+    width: 350px;
+
+    @include breakpoints-down("small") {
+      width: 300px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    > div {
+      display: flex;
+
+      justify-content: space-between;
+      font-family: "Roboto", sans-serif;
+
+      p,
+      span {
+        font-size: 17px;
+        font-weight: 500;
+        color: #2c2c2c;
+      }
+    }
+  }
+}

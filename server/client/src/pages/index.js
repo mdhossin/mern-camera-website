@@ -10,6 +10,7 @@ import NotFound from "./NotFound/NotFound";
 import Loading from "../components/Loading/Loading";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Shop from "./Shop/Shop";
+import ProductDetail from "./ProductDetail/ProductDetail";
 // user dashboard
 import UserDashboard from "./Manager/UserDashboard/UserDashboard";
 import Profile from "./Manager/UserDashboard/Profile/Profile";
@@ -23,6 +24,10 @@ import UserListItem from "./Manager/AdminDashboard/UserList/UserListItem/UserLis
 import EditUser from "./Manager/AdminDashboard/EditUser/EditUser";
 import AddProduct from "./Manager/AdminDashboard/AddProduct/AddProduct";
 import AllProducts from "./Manager/AdminDashboard/AllProducts/AllProducts";
+
+import CheckOut from "./Checkout/Checkout";
+import CheckoutPayment from "./CheckoutPayment/CheckoutPayment";
+
 export {
   Home,
   Register,
@@ -46,4 +51,7 @@ export {
   AddProduct,
   AllProducts,
   Shop,
+  ProductDetail,
+  CheckOut,
+  CheckoutPayment,
 };

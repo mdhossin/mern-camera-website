@@ -4,9 +4,6 @@ import {
   CREATE_PRODUCT_REQUEST,
   CREATE_PRODUCT_RESET,
   CREATE_PRODUCT_SUCCESS,
-  FETCH_PRODUCTS_FAIL,
-  FETCH_PRODUCTS_LOADING,
-  FETCH_PRODUCTS_SUCCESS,
   PRODUCT_DELETE_FAIL,
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_SUCCESS,
@@ -135,7 +132,7 @@ export const getProductById = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.get(`/api/products/${id}`);
-    console.log("from action file:", data);
+    // console.log("from action file:", data);
     dispatch({
       type: PRODUCT_BY_ID_SUCCESS,
       payload: data,
@@ -152,7 +149,7 @@ export const getProductById = (id) => async (dispatch) => {
   }
 };
 
-// Get All Products For Admin
+// Get All Products
 export const getAllProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTS_LOADING });

@@ -28,7 +28,8 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10",
-    "nodemailer": "^6.7.3"
+    "nodemailer": "^6.7.3",
+    "stripe": "^8.217.0"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",

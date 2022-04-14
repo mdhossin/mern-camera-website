@@ -1,0 +1,84 @@
+@use "./utils/" as *;
+
+.product {
+  margin-top: 7rem;
+  &__detail {
+    @include breakpoint-up("large") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &__img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 280px;
+      }
+    }
+
+    &__info {
+      &-name {
+        font-size: 26px;
+        margin: 1rem 0 0.5rem 0;
+        color: #2c2c2c;
+        font-weight: 600;
+      }
+
+      &-rating {
+        margin-bottom: 0.5rem;
+      }
+
+      &-stock {
+        p {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          font-weight: 500;
+        }
+      }
+
+      &__price {
+        &-count {
+          display: block;
+          font-size: 22px;
+          color: var(--main-color);
+          font-family: "Roboto", sans-serif;
+          margin-top: 0.8rem;
+          font-weight: 500;
+        }
+      }
+      &__buttons {
+        display: flex;
+        align-items: center;
+
+        gap: 1rem;
+
+        &__select {
+          height: 50px;
+          padding: 0 1.5rem;
+          font-size: 1rem;
+          border: 1px solid #e4e4e4;
+          border-radius: 2px;
+        }
+
+        .add {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .button {
+          width: 170px;
+          font-weight: 500;
+          margin-top: 0;
+        }
+      }
+
+      &-desc {
+        margin: 1rem 0;
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

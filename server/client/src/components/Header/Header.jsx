@@ -106,7 +106,7 @@ const Header = () => {
           <ul className="nav__list">
             <li className="nav__item">
               <a
-                href="#contact"
+                href="#cart"
                 className="nav__wrapper nav__link"
                 aria-expanded={isCartOpen ? "true" : "false"}
                 onClick={() => {

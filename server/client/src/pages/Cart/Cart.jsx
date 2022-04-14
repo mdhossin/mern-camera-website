@@ -2,12 +2,14 @@ import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { CartSummary, CheckOut } from "../../components";
+import { CartSummary } from "../../components";
+
 import {
   addItemsToCart,
   removeItemsFromCart,
 } from "../../redux/actions/cartActions";
 import CartList from "../CartList/CartList";
+import CheckOut from "../Checkout/Checkout";
 
 const Cart = ({ setCartOpen }) => {
   const dispatch = useDispatch();
@@ -54,7 +56,7 @@ const Cart = ({ setCartOpen }) => {
       {cartItems.length > 0 && (
         <div className="cart__checkout">
           <CartSummary cartTotal={cartTotal} />
-          <CheckOut setCartOpen={setCartOpen} />
+          <CheckOut cartTotal={cartTotal} setCartOpen={setCartOpen} />
         </div>
       )}
     </div>

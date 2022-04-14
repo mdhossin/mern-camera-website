@@ -6,7 +6,7 @@ import {
   getAllProduct,
   deleteProduct,
 } from "../../../../redux/actions/productActions";
-import { Loader, Loading } from "../../../../components";
+import { Loader } from "../../../../components";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -56,9 +56,8 @@ const AllProducts = () => {
           <>
             {products?.map((product) => (
               <div key={product?._id} className="allProducts__container__item">
-                <Link to="/">
-                  <img src={product?.images?.url} alt="" />
-                </Link>
+                <img src={product?.images?.url} alt="" />
+
                 <div className="allProducts__container__item__content">
                   <h3>{product.name}</h3>
                   <div className="allProducts__container__item-price">

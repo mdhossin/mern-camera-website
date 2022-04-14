@@ -43,5 +43,10 @@
 
 @use "./all-products";
 
+@use "./product-detail";
+
 // loader
 @use "./loader";
+
+//
+@use "./checkout-payment";

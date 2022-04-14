@@ -19,11 +19,13 @@ const SingleItem = ({ product }) => {
 
   return (
     <div className="products__container__item">
-      <Link to="/">
+      <Link to={`/product/${product._id}`}>
         <img src={product?.images?.url} alt="" />
       </Link>
       <div>
-        <h3>{product.name}</h3>
+        <Link to={`/product/${product._id}`}>
+          <h3>{product.name}</h3>
+        </Link>
         <h5>${product.price}</h5>
         <ProductRating ratingValue={product.ratings} />
         <div>

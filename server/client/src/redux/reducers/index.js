@@ -5,8 +5,13 @@ import {
   userLogoutReducer,
   userRegisterReducer,
 } from "./userReducer";
-import { createProductReducer, productReducer } from "./productReducer";
+import {
+  createProductReducer,
+  productByIdReducer,
+  productReducer,
+} from "./productReducer";
 import { cartReducer } from "./cartReducer";
+import { orderReducer } from "./orderReducer";
 
 export default combineReducers({
   userLogin: userLoginReducer,
@@ -16,4 +21,6 @@ export default combineReducers({
   createProduct: createProductReducer,
   allProducts: productReducer,
   cart: cartReducer,
+  productById: productByIdReducer,
+  order: orderReducer,
 });

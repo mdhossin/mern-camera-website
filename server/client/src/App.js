@@ -19,6 +19,9 @@ import {
   AddProduct,
   AllProducts,
   Shop,
+  ProductDetail,
+  Cart,
+  CheckoutPayment,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -53,6 +56,14 @@ function App() {
         ></Route>
 
         <Route path="/user/reset/:token" element={<ResetPassword />} />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <CheckoutPayment />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/active/:activation_token"
@@ -62,6 +73,7 @@ function App() {
         />
 
         <Route path="shop" element={<Shop />} />
+        <Route path="/product/:productId" element={<ProductDetail />} />
 
         {user?.access_token && user?.user?.role === 0 && (
           <Route
