@@ -1,5 +1,15 @@
 @use "./utils/" as *;
 
-.myOrders {
-  padding: 7rem 0;
+.myorders {
+  padding: 3rem 0;
+
+  h2 {
+    font-size: 26px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  @media screen and(min-width: 1080px) {
+    padding: 7rem 0;
+  }
 }

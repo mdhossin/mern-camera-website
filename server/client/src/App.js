@@ -20,8 +20,8 @@ import {
   AllProducts,
   Shop,
   ProductDetail,
-  Cart,
   CheckoutPayment,
+  OrderDetails,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -86,6 +86,7 @@ function App() {
           >
             <Route index element={<Profile />} />
             <Route path="myorders" element={<Myorders />} />
+            <Route path="order/:orderId" element={<OrderDetails />} />
           </Route>
         )}
 

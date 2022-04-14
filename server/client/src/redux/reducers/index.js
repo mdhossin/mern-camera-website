@@ -11,7 +11,12 @@ import {
   productReducer,
 } from "./productReducer";
 import { cartReducer } from "./cartReducer";
-import { orderReducer } from "./orderReducer";
+import {
+  myOrdersReducer,
+  newOrderReducer,
+  orderDetailsReducer,
+  orderReducer,
+} from "./orderReducer";
 
 export default combineReducers({
   userLogin: userLoginReducer,
@@ -22,5 +27,9 @@ export default combineReducers({
   allProducts: productReducer,
   cart: cartReducer,
   productById: productByIdReducer,
+  newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
+  orderDetails: orderDetailsReducer,
+  // update order reducer
   order: orderReducer,
 });

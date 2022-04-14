@@ -22,7 +22,7 @@ import {
 import axios from "axios";
 
 // Create Order action
-export const createOrder = (order, addToast) => async (dispatch, getState) => {
+export const createOrder = (order) => async (dispatch, getState) => {
   const token = getState().userLogin?.userInfo?.access_token;
   try {
     dispatch({ type: CREATE_ORDER_REQUEST });
@@ -40,7 +40,7 @@ export const createOrder = (order, addToast) => async (dispatch, getState) => {
     // navigate("/success");
     localStorage.removeItem("cartItems");
     alert(data?.message);
-    window.location.href = "/myorders";
+    window.location.href = "/dashboard/myorders";
   } catch (error) {
     alert(
       error.response && error.response.data.message

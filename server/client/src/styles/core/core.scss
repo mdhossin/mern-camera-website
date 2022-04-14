@@ -32,6 +32,7 @@
 // user dashboard
 @use "./sidebar";
 @use "./my-orders";
+@use "./order-details";
 
 // both user and admin dashboard use
 @use "./profile";
@@ -50,3 +51,5 @@
 
 //
 @use "./checkout-payment";
+
+//

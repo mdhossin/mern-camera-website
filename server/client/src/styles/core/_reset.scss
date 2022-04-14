@@ -261,3 +261,10 @@ input {
 input:focus {
   background: transparent;
 }
+
+.redColor {
+  color: var(--main-color);
+}
+.greenColor {
+  color: green;
+}

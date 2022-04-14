@@ -2,24 +2,20 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { createOrder } from "../../redux/actions/orderActions";
-import { useToasts } from "react-toast-notifications";
 
 const CheckoutPayment = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  //   const auth = useSelector((state) => state.userLogin?.userInfo);
-  //   const { user } = auth;
+
   const dispatch = useDispatch();
-  const { addToast } = useToasts();
 
   const { user } = useSelector((state) => state.userLogin?.userInfo);
-  console.log(user);
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 0 : 100;
+  const shippingCharges = subtotal < 1000 ? 0 : 100;
 
   const tax = subtotal * 0.18;
 
@@ -37,8 +33,12 @@ const CheckoutPayment = () => {
     order.shippingInfo = token.card;
     order.email = token.email;
     order.id = token.id;
+    order.paymentInfo = {
+      id: token.id,
+      status: "succeeded",
+    };
     if (token) {
-      dispatch(createOrder(order, addToast));
+      dispatch(createOrder(order));
     }
   };
 
@@ -47,12 +47,16 @@ const CheckoutPayment = () => {
       <div className="checkoutPayment__content">
         <h2>Payment Info</h2>
         <div>
+          <p>Subtotal: </p>
+          <span>${subtotal}</span>
+        </div>
+        <div>
           <p>Shipping Charges: </p>
           <span>${shippingCharges}</span>
         </div>
         <div>
           <p>Tax : </p>
-          <span>$0.18%</span>
+          <span>${tax}</span>
         </div>
         <hr />
         <div>

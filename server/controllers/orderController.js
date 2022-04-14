@@ -7,7 +7,8 @@ const orderController = {
   async newOrder(req, res, next) {
     console.log(req.body);
     try {
-      const { shippingInfo, orderItems, email, totalPrice, id } = req.body;
+      const { shippingInfo, orderItems, email, totalPrice, id, paymentInfo } =
+        req.body;
 
       const customer = await stripe.customers.create({
         email: email,
@@ -28,6 +29,7 @@ const orderController = {
           email,
           totalPrice,
           id,
+          paymentInfo,
           paidAt: Date.now(),
           user: req.user._id,
         });
@@ -44,45 +46,7 @@ const orderController = {
       return next(error);
     }
   },
-  //   async updateProducts(req, res, next) {
-  //     try {
-  //       const { name, description, Stock, price, isActive, images, ratings } =
-  //         req.body;
-  //       if (!images) {
-  //         return next(CustomErrorHandler.badRequest("No image upload"));
-  //       }
 
-  //       await Products.findOneAndUpdate(
-  //         { _id: req.params.id },
-  //         {
-  //           name,
-  //           description,
-  //           Stock,
-  //           price,
-  //           isActive,
-  //           images,
-  //           ratings,
-  //         },
-  //         { new: true }
-  //       );
-
-  //       res.json({ message: "Updated a Product" });
-  //     } catch (err) {
-  //       return next(err);
-  //     }
-  //   },
-  //   async deleteProducts(req, res, next) {
-  //     try {
-  //       try {
-  //         await Products.findByIdAndDelete(req.params.id);
-  //         res.json({ message: "Deleted a Product" });
-  //       } catch (err) {
-  //         return next(err);
-  //       }
-  //     } catch (err) {
-  //       return next(err);
-  //     }
-  //   },
   async getOrderById(req, res, next) {
     let order;
     try {
