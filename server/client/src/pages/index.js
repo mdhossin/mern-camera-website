@@ -29,6 +29,7 @@ import CheckOut from "./Checkout/Checkout";
 import CheckoutPayment from "./CheckoutPayment/CheckoutPayment";
 import OrderDetails from "./Manager/UserDashboard/OrderDetails/OrderDetails";
 import OrderList from "./Manager/AdminDashboard/OrderList/OrderList";
+import ProcessOrder from "./Manager/AdminDashboard/ProcessOrder/ProcessOrder";
 export {
   Home,
   Register,
@@ -57,4 +58,5 @@ export {
   CheckoutPayment,
   OrderDetails,
   OrderList,
+  ProcessOrder,
 };

@@ -23,6 +23,7 @@ import {
   CheckoutPayment,
   OrderDetails,
   OrderList,
+  ProcessOrder,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -109,7 +110,7 @@ function App() {
             <Route path="products" element={<AllProducts />} />
 
             <Route path="orders" element={<OrderList />} />
-            {/* <Route path="admin/order/:id" element={<ProcessOrder />} /> */}
+            <Route path="admin/order/:id" element={<ProcessOrder />} />
           </Route>
         )}
 
