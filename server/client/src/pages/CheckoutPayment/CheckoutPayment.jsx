@@ -19,7 +19,7 @@ const CheckoutPayment = () => {
 
   const tax = subtotal * 0.18;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const totalPrice = Math.round(subtotal + tax + shippingCharges);
 
   const order = {
     // shippingInfo,
@@ -48,15 +48,15 @@ const CheckoutPayment = () => {
         <h2>Payment Info</h2>
         <div>
           <p>Subtotal: </p>
-          <span>${subtotal}</span>
+          <span>${subtotal.toFixed(2)}</span>
         </div>
         <div>
           <p>Shipping Charges: </p>
-          <span>${shippingCharges}</span>
+          <span>${shippingCharges.toFixed(2)}</span>
         </div>
         <div>
           <p>Tax : </p>
-          <span>${tax}</span>
+          <span>${tax.toFixed(2)}</span>
         </div>
         <hr />
         <div>

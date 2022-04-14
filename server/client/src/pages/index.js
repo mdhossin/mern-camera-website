@@ -28,7 +28,7 @@ import AllProducts from "./Manager/AdminDashboard/AllProducts/AllProducts";
 import CheckOut from "./Checkout/Checkout";
 import CheckoutPayment from "./CheckoutPayment/CheckoutPayment";
 import OrderDetails from "./Manager/UserDashboard/OrderDetails/OrderDetails";
-
+import OrderList from "./Manager/AdminDashboard/OrderList/OrderList";
 export {
   Home,
   Register,
@@ -56,4 +56,5 @@ export {
   CheckOut,
   CheckoutPayment,
   OrderDetails,
+  OrderList,
 };

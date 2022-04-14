@@ -62,7 +62,8 @@ const MyOrders = () => {
                         {" "}
                         <BiEdit
                           style={{
-                            color: "rgb(165, 5, 29)",
+                            color: "#f1510a",
+                            fontSize: "18px",
                             cursor: "pointer",
                           }}
                         />
