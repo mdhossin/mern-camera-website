@@ -33,14 +33,14 @@ const Sidebar = () => {
   useEffect(() => {
     if (error) {
       dispatch({ type: USER_LOGOUT_RESET });
-      addToast(error, { appearance: "error", autoDismiss: true });
+      // addToast(error, { appearance: "error", autoDismiss: true });
     } else if (userLogout) {
       dispatch({ type: USER_LOGOUT_RESET });
 
-      addToast(userLogout?.message, {
-        appearance: "success",
-        autoDismiss: true,
-      });
+      // addToast(userLogout?.message, {
+      //   appearance: "success",
+      //   autoDismiss: true,
+      // });
 
       navigate("/");
     }
