@@ -1,151 +1,118 @@
 @use "./utils/" as *;
-/*------ 22. contact Page  ------*/
 
 .contacts {
-  background-color: #f3f3f3;
-  padding: 7rem 0;
+  padding-top: 5.5rem;
+  width: 100%;
+  padding-bottom: 6rem;
+  &__header {
+    height: 130px;
+    background-color: rgb(243, 244, 246);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      font-weight: 500;
+      color: #333;
+      font-size: 2rem;
+    }
+  }
+
   &__content {
-    @include breakpoint-up("large") {
-      padding-top: 5rem;
-      grid-template-columns: 1fr 2fr;
-    }
+    padding-top: 5rem;
+    font-family: "Roboto", sans-serif;
 
-    &__info {
-      padding: 0 1rem;
-      //   flex: 1;
-      @include breakpoint-up("medium") {
-        padding: 0 2rem;
+    @include breakpoint-up("medium") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint-up("xlarge") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &__box {
+      border: 1px solid #e4e4e4;
+      padding: 2rem;
+      transition: all 0.5s ease;
+
+      &:hover {
+        border: 1px solid var(--hover-color);
       }
 
-      &__wrapper {
-        padding: 5rem 0;
-        // padding: 9rem 0;
+      &__img {
+        width: 50px;
+        height: 50px;
+        color: #fff;
+        background-color: var(--main-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
 
-        &__info {
-          display: flex;
-          column-gap: 1.2rem;
-          align-items: center;
-          &-icon {
-            font-size: 20px;
-            line-height: 40px;
-
-            display: inline-block;
-
-            width: 40px;
-            height: 40px;
-
-            transition: all 0.3s ease 0s;
-            text-align: center;
-
-            color: #252525;
-            border: 1px solid #252525;
-            border-radius: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          &-dec {
-            p {
-              font-size: 16px;
-              font-weight: 500;
-              color: #2c2c2c;
-            }
-          }
+        svg {
+          font-size: 1.4rem;
         }
 
-        &__social {
-          text-align: center;
-          h3 {
-            font-weight: 500;
-            line-height: 1;
-
-            margin-top: 2.5rem;
-
-            color: #2c2c2c;
-            text-align: center;
-          }
-
-          ul {
-            margin-top: 1.5rem;
-            li {
-              display: inline-block;
-
-              &:not(:first-child) {
-                margin-left: 20px;
-              }
-              a {
-                svg {
-                  font-size: 18px;
-                }
-                color: #4d4d4d;
-
-                &:hover {
-                  color: var(--theme-color);
-                }
-              }
-            }
-          }
+        &:hover {
+          background-color: var(--hover-color);
         }
       }
+
+      h4 {
+        font-weight: 600;
+        font-size: 22px;
+        color: #333;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        color: #2c2c2c;
+      }
+    }
+  }
+
+  &__form {
+    padding-top: 4rem;
+
+    h2 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #333;
+      padding-bottom: 2rem;
     }
 
-    &__details {
-      padding: 0 1rem;
-      //   flex: 2;
-      //   padding: 5rem 4rem;
-      @include breakpoint-up("medium") {
-        padding: 0 2rem;
-      }
-      @include breakpoint-up("large") {
-      }
+    &__content {
+      &__inputs {
+        @include breakpoint-up("large") {
+          grid-template-columns: repeat(2, 1fr);
+        }
 
-      &__form {
-        &__title {
+        @include breakpoint-up("xlarge") {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      &__message {
+        padding-top: 1.5rem;
+
+        textarea {
+          font-size: 15px;
+
+          width: 100%;
+
+          padding: 10px;
+          border-radius: 3px;
           color: #2c2c2c;
-          font-weight: 500;
-          margin-bottom: 2.5rem;
-          text-align: center;
-
-          @include breakpoint-up("large") {
-            text-align: start;
-          }
+          border: 1px solid #e4e4e4 !important;
+          background: transparent;
+          box-shadow: none;
         }
+      }
+    }
 
-        &__desc {
-          input,
-          textarea {
-            height: 50px;
-            margin-bottom: 20px;
-            padding: 2px 14px;
-
-            color: #000;
-            border: 1px solid #c1c1c1;
-            background: transparent;
-          }
-          textarea {
-            height: 175px;
-            margin-bottom: 0;
-            padding: 20px 14px;
-          }
-          button {
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1;
-
-            margin-top: 38px;
-            padding: 15px 52px;
-
-            text-transform: uppercase;
-
-            color: #fff;
-            border: none;
-            background-color: #404040;
-            &:hover {
-              background-color: var(--theme-color);
-            }
-          }
-        }
+    &__button {
+      padding-top: 1rem;
+      .button {
+        width: 200px;
       }
     }
   }

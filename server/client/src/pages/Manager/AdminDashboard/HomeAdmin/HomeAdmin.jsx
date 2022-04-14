@@ -65,7 +65,9 @@ const HomeAdmin = () => {
             { name: MONTHS[item._id - 1], "Active User": item.total },
           ])
         );
-      } catch {}
+      } catch (error) {
+        console.log(error.messge);
+      }
     };
     getStats();
   }, [MONTHS, access_token]);
@@ -92,14 +94,6 @@ const HomeAdmin = () => {
             <h4>{users && users?.length}</h4>
           </div>
         </div>
-
-        {/* <div className="lineChart">
-          <Line data={lineState} />
-        </div> */}
-
-        {/* <div className="doughnutChart">
-          <Doughnut data={doughnutState} />
-        </div> */}
 
         <Chart
           data={userStats}

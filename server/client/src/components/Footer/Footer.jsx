@@ -115,13 +115,19 @@ const Footer = () => (
         <p className="icam">icam@gmail.com</p>
         <ul className="footer__social">
           <li>
-            <BsFacebook />
+            <a href="https://www.facebook.com/">
+              <BsFacebook />
+            </a>
           </li>
           <li>
-            <AiFillInstagram />
+            <a href="https://www.instagram.com/">
+              <AiFillInstagram />
+            </a>
           </li>
           <li>
-            <BsPinterest />
+            <a href="https://www.pinterest.com/">
+              <BsPinterest />
+            </a>
           </li>
         </ul>
       </div>

@@ -24,6 +24,7 @@ import {
   OrderDetails,
   OrderList,
   ProcessOrder,
+  Contact,
 } from "./pages";
 import { refreshToken } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -49,6 +50,7 @@ function App() {
           element={user?.access_token ? <Navigate to="/" /> : <Register />}
         />
         <Route path="login" element={<Login />} />
+        <Route path="contact" element={<Contact />} />
 
         <Route
           path="/forgotpassword"

@@ -11,6 +11,7 @@ import Loading from "../components/Loading/Loading";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Shop from "./Shop/Shop";
 import ProductDetail from "./ProductDetail/ProductDetail";
+import Contact from "./Contact/Contact";
 // user dashboard
 import UserDashboard from "./Manager/UserDashboard/UserDashboard";
 import Profile from "./Manager/UserDashboard/Profile/Profile";
@@ -59,4 +60,5 @@ export {
   OrderDetails,
   OrderList,
   ProcessOrder,
+  Contact,
 };

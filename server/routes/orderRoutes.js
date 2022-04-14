@@ -11,9 +11,6 @@ router.get("/orders/:id", auth, orderController.getOrderById);
 // admin routes
 router.get("/admin/orders", [auth, authAdmin], orderController.getAllOrders);
 
-// get monthly income route
-router.get("/admin/orders/income", [auth, authAdmin], orderController.income);
-
 router
   .route("/admin/order/:id")
   .put([auth, authAdmin], orderController.updateOrder)

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DiscountArea = () => (
   <div className="discount-section">
@@ -9,7 +10,9 @@ const DiscountArea = () => (
         <p>WE'RE AT 71% OF OUR GOAL!</p>
         <h2>Discount For All Orders Over $100</h2>
         <h5>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h5>
-        <button className="button">Shop Now</button>
+        <Link to="/shop">
+          <button className="button">Shop Now</button>
+        </Link>
       </div>
     </div>
   </div>

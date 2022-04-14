@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeBanner = () => {
   return (
@@ -9,7 +10,9 @@ const HomeBanner = () => {
           <div>
             <h3>Smart Protection</h3>
             <h1>Monitor and control your home anytime, anywhere.</h1>
-            <button className="button">Shop Now</button>
+            <Link to="/shop">
+              <button className="button">Shop Now</button>
+            </Link>
           </div>
         </div>
         <div className="homeBanner__container__left right">
@@ -17,7 +20,9 @@ const HomeBanner = () => {
           <div>
             <h3>Full Protection</h3>
             <h1>Featured Security Camera to stay protected</h1>
-            <button className="button">Shop Now</button>
+            <Link to="/shop">
+              <button className="button">Shop Now</button>
+            </Link>
           </div>
         </div>
       </div>

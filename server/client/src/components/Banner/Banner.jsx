@@ -1,6 +1,7 @@
 import { Carousel } from "react-bootstrap";
 import React from "react";
 import { bannerData } from "../../fakeData";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -16,7 +17,9 @@ const Banner = () => {
             <h1>{banner.title}</h1>
             <p>{banner.desc}</p>
 
-            <button>View Collection</button>
+            <Link to="/shop">
+              <button>View Collection</button>
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
