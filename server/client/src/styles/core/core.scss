@@ -46,6 +46,9 @@
 
 @use "./product-detail";
 @use "./process-order";
+@use "./home-admin";
+
+@use "./chart";
 
 // loader
 @use "./loader";

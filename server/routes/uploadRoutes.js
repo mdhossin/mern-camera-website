@@ -5,7 +5,11 @@ const uploadImage = require("../middlewares/uploadImage");
 
 const router = express.Router();
 // upload image  middleware for user
-router.post("/upload_image", auth, uploadImage, uploadController.uploadAvatar);
+router.post(
+  "/upload_image",
+  [auth, uploadImage],
+  uploadController.uploadAvatar
+);
 
 // delete image
 router.post("/destroy", auth, uploadController.destroy);

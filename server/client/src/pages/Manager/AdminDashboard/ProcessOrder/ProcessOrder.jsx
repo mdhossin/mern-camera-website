@@ -146,7 +146,7 @@ const ProcessOrder = () => {
             {/* update area */}
             <div
               style={{
-                display: order.orderStatus === "Delivered" ? "none" : "block",
+                display: order.orderStatus === "Delivered" ? "block" : "grid",
               }}
             >
               <form

@@ -10,12 +10,12 @@ router
   .route("/products")
   .get(productController.getAllProducts)
 
-  .post(auth, authAdmin, productController.createProduct);
+  .post([auth, authAdmin], productController.createProduct);
 
 router
   .route("/products/:id")
   .get(productController.getByIdProduct)
-  .delete(auth, authAdmin, productController.deleteProducts)
-  .put(auth, authAdmin, productController.updateProducts);
+  .delete([auth, authAdmin], productController.deleteProducts)
+  .put([auth, authAdmin], productController.updateProducts);
 
 module.exports = router;

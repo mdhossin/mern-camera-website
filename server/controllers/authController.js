@@ -346,6 +346,33 @@ const authCtrl = {
       return next(err);
     }
   },
+
+  async statsUserPerMonth(req, res, next) {
+    const date = new Date();
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+
+    let data;
+
+    try {
+      data = await Users.aggregate([
+        { $match: { createdAt: { $gte: lastYear } } },
+        {
+          $project: {
+            month: { $month: "$createdAt" },
+          },
+        },
+        {
+          $group: {
+            _id: "$month",
+            total: { $sum: 1 },
+          },
+        },
+      ]);
+    } catch (err) {
+      return next(err);
+    }
+    res.json(data);
+  },
 };
 
 const loginUser = async (user, password, res) => {

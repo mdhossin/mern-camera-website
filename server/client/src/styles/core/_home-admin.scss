@@ -1,0 +1,44 @@
+@use "./utils/" as *;
+
+.admin {
+  font-family: "Roboto", sans-serif;
+  //   padding: 4rem 0 5rem 0;
+  padding: 4rem 0;
+  @media screen and (min-width: 1080px) {
+    padding: 7rem 0;
+  }
+
+  &__container {
+    &__summary {
+      @include breakpoint-up("medium") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include breakpoint-up("xlarge") {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @include breakpoint-up("xxlarge") {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      > div {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 1.5rem 0.5rem;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+        h3 {
+          font-size: 1.3rem;
+          font-weight: 400;
+
+          color: #2c2c2c;
+        }
+        h4 {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-top: 1rem;
+          color: var(--main-color);
+        }
+      }
+    }
+  }
+}

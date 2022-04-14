@@ -104,6 +104,7 @@ const orderController = {
   async updateOrder(req, res, next) {
     try {
       const order = await Order.findById(req.params.id);
+      console.log(order, "update order");
 
       if (!order) {
         return next(
@@ -149,29 +150,47 @@ const orderController = {
       return next(err);
     }
   },
-  // async deleteOrder(req, res, next){
-  //   try {
-  //     const order = await Order.findById(req.params.id);
+  async income(req, res, next) {
+    const productId = req.query.pid;
+    console.log(productId, "id");
+    const date = new Date();
+    const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+    const previousMonth = new Date(
+      new Date().setMonth(lastMonth.getMonth() - 1)
+    );
 
-  //     if (!order) {
-  //       return next(
-  //         CustomErrorHandler.badRequest("Order not found with this Id,")
-  //       );
-  //     }
-
-  //     await order.remove();
-
-  //     res.status(200).json({
-  //       success: true,
-  //     });
-
-  //   } catch (error) {
-  //     return next(error)
-
-  //   }
-  // }
-  // search api
-  // fetch  product name search api
+    try {
+      const income = await Order.aggregate([
+        {
+          $match: {
+            createdAt: { $gte: previousMonth },
+            ...(productId && {
+              products: {
+                $elemMatch: {
+                  productId,
+                },
+              },
+            }),
+          },
+        },
+        {
+          $project: {
+            month: { $month: "$createdAt" },
+            sales: "$amount",
+          },
+        },
+        {
+          $group: {
+            _id: "$month",
+            total: { $sum: "$sales" },
+          },
+        },
+      ]);
+      res.json(income);
+    } catch (err) {
+      return next(CustomErrorHandler.serverError());
+    }
+  },
 };
 
 async function updateStock(id, quantity) {

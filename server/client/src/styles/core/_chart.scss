@@ -1,0 +1,10 @@
+.chart {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  padding: 20px;
+
+  &__title {
+    margin-bottom: 22px;
+    color: #333;
+    font-weight: 700;
+  }
+}
