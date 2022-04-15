@@ -15,14 +15,14 @@
 
 # Here is the Demo - (https://mern-camera-shop.herokuapp.com/)
 
-Website Interface -
+# Website Interface -
 
 ![plot](./server/client/src/assets/full-page.png)
 
-Admin Dashboard interface -
+# Admin Dashboard interface -
 
 ![plot](./server/client/src/assets/admin.png)
 
-User Dashboard interface -
+# User Dashboard interface -
 
 ![plot](./server/client/src/assets/user.png)
