@@ -16,8 +16,8 @@ const SingleProduct = ({ product }) => {
   };
   return (
     <motion.div
-      whileInView={{ opacity: [0, 1] }}
-      transition={{ duration: 1 }}
+      // whileInView={{ opacity: [0, 1] }}
+      // transition={{ duration: 1 }}
       className="products__container__item"
     >
       <Link to={`/product/${product._id}`}>
