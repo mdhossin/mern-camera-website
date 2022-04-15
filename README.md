@@ -7,7 +7,7 @@
 - Update user information (name, password and avatar)
 - Shopping cart functionality
 - Implemented stripe payment gateway
-- Implemented user dashboard where user see her profile and he see her orders and what is the stats of the individual orders
+- Implemented user dashboard where user see her profile and he see her orders and what is the status of the individual orders
 - Restful apis
 - Impelemeted JSON web token for website security and also use refresh token for more secure
 - Implemented Admin panel where admin manage all orders, update orders, remove orders, manage all users, update user role, upadate user, add new product, update product, remove product etc
